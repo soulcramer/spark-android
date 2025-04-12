@@ -1,11 +1,12 @@
 # Spark Android Design System
-
 <p align="center">
 <picture>
     <source media="(prefers-color-scheme: dark)" srcset="art/spark-logo-dark.svg">
     <img alt="Spark Design System logo" src="art/spark-logo-light.svg">
   </picture>
 </p>
+
+This fork aims to migrate the spark library to be multiplatform
 
 [![👷 Build → 🧑‍🔬 Test → 🕵️ Lint](https://github.com/leboncoin/spark-android/actions/workflows/ci.yml/badge.svg)](https://github.com/leboncoin/spark-android/actions/workflows/ci.yml)
 
