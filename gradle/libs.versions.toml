@@ -13,6 +13,8 @@ lint = "31.9.1"
 minCompileSdk = "24"
 spotless = "7.0.3"
 targetSdk = "35"
+core = "1.5.0"
+junit = "1.1.5"
 
 [libraries]
 accompanist-drawablepainter = { module = "com.google.accompanist:accompanist-drawablepainter", version.ref = "accompanist" }
@@ -94,7 +96,7 @@ kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test" }
-
+kotlin-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
 kotlinx-collections-immutable = "org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.8"
 kotlinx-serialization-json = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1"
 
