@@ -19,47 +19,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import app.tivi.inject.DesktopApplicationComponent
-import app.tivi.inject.WindowComponent
-import app.tivi.inject.create
-import app.tivi.screens.DiscoverScreen
-import com.slack.circuit.backstack.rememberSaveableBackStack
-import com.slack.circuit.foundation.rememberCircuitNavigator
 
-public fun main() = application {
-    val applicationComponent = remember {
-        DesktopApplicationComponent.create()
-    }
-
-    LaunchedEffect(applicationComponent) {
-        applicationComponent.initializers.initialize()
-    }
+public fun main(): Unit = application {
 
     Window(
-        title = "Tivi",
+        title = "Spark",
         onCloseRequest = ::exitApplication,
     ) {
-        val component = remember(applicationComponent) {
-            WindowComponent.create(applicationComponent)
-        }
+        Surface(
 
-        val backstack = rememberSaveableBackStack(listOf(DiscoverScreen))
-        val navigator = rememberCircuitNavigator(backstack) { /* no-op */ }
-
-        component.tiviContent.Content(
-            backstack = backstack,
-            navigator = navigator,
-            onOpenUrl = {
-                // no-op for now
-                false
-            },
-            modifier = Modifier,
         )
     }
 }

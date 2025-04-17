@@ -22,6 +22,7 @@
 plugins {
     alias(libs.plugins.spark.library)
     alias(libs.plugins.spark.compose)
+//    alias(libs.plugins.spark.kotlinMultiplatform)
     alias(libs.plugins.spark.dokka)
     alias(libs.plugins.spark.publishing)
     alias(libs.plugins.spark.dependencyGuard)
@@ -33,6 +34,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.compose.ui)
+    implementation(compose.ui)
     implementation(libs.androidx.appCompat.resources) // Needed for compat vector drawables
 }

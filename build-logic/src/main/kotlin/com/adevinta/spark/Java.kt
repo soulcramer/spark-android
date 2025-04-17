@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Adevinta
+ * Copyright (c) 2025 Adevinta
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,23 +19,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-plugins {
-    alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.android.kotlin.multiplatform.library) apply false
-    alias(libs.plugins.android.lint) apply false
-    alias(libs.plugins.kotlin.multiplatform) apply false
-    alias(libs.plugins.kotlin.jvm) apply false
-    alias(libs.plugins.paparazzi) apply false
-    alias(libs.plugins.dokka) apply false
-    alias(libs.plugins.dependencyGuard) apply false
-    alias(libs.plugins.spotless) apply false
-    alias(libs.plugins.compose) apply false
-    alias(libs.plugins.compose.multiplatform) apply false
 
-    alias(libs.plugins.spark.root)
-    alias(libs.plugins.spark.dokka)
+package com.adevinta.spark
+
+import org.gradle.api.Project
+import org.gradle.api.plugins.JavaPluginExtension
+import org.gradle.jvm.toolchain.JavaLanguageVersion
+import org.gradle.kotlin.dsl.configure
+
+public fun Project.configureJava() {
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+    }
 }
 
-allprojects {
-    apply(plugin = "com.adevinta.spark.spotless")
-}
+private fun Project.java(action: JavaPluginExtension.() -> Unit) = extensions.configure<JavaPluginExtension>(action)

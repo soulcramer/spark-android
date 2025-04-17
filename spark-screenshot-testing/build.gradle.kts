@@ -32,9 +32,9 @@ android {
 dependencies {
     implementation(projects.spark)
 
-    implementation(libs.androidx.compose.foundation)
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.material3)
+    implementation(compose.foundation)
+    implementation(compose.ui)
+    implementation(compose.material3)
     implementation(libs.kotlinx.collections.immutable)
 
     testImplementation(libs.junit)

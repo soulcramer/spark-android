@@ -33,7 +33,7 @@ androidx-compose-animation-graphics = { module = "androidx.compose.animation:ani
 androidx-compose-bom = "androidx.compose:compose-bom:2025.04.00"
 androidx-compose-foundation = { module = "androidx.compose.foundation:foundation" }
 androidx-compose-foundation-layout = { module = "androidx.compose.foundation:foundation-layout" }
-androidx-compose-material-iconsExtended = { module = "androidx.compose.material:material-icons-extended" }
+androidx-compose-material-iconsExtended = { module = "org.jetbrains.compose.material:material-icons-extended" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
 androidx-compose-material3-windowSizeClass = { module = "androidx.compose.material3:material3-window-size-class"}
 androidx-compose-runtime = { module = "androidx.compose.runtime:runtime" }
@@ -143,6 +143,7 @@ spark-compose = { id = "com.adevinta.spark.android-compose" }
 spark-lint = { id = "com.adevinta.spark.android-lint" }
 spark-publishing = { id = "com.adevinta.spark.publishing" }
 spark-kotlinJvm = { id = "com.adevinta.spark.kotlin-jvm" }
+spark-kotlinMultiplatform = { id = "com.adevinta.spark.kotlin.multiplatform" }
 spark-dokka = { id = "com.adevinta.spark.dokka" }
 spark-dependencyGuard = { id = "com.adevinta.spark.dependencyGuard" }
 spark-spotless = { id = "com.adevinta.spark.spotless" }
