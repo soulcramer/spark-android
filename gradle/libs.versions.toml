@@ -4,6 +4,8 @@ android-gradlePlugin = "8.9.1"
 androidx-activity = "1.10.1"
 androidx-appCompat = "1.7.0"
 compileSdk = "35"
+compose-multiplatform = "1.7.3"
+coroutines = "1.10.2"
 dependencyGuard = "0.5.0"
 dokka = "1.9.20"
 kotlin = "2.1.20"
@@ -78,11 +80,13 @@ dokka-android-documentation-plugin = { module = "org.jetbrains.dokka:android-doc
 dokka-base = { module = "org.jetbrains.dokka:dokka-base", version.ref = "dokka" }
 
 gradlePlugins-android = { module = "com.android.tools.build:gradle", version.ref = "android-gradlePlugin" }
-gradlePlugins-compose = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
+gradlePlugins-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose-multiplatform" }
+gradlePlugins-composeCompiler = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 gradlePlugins-dependencyGuard = { module = "com.dropbox.dependency-guard:com.dropbox.dependency-guard.gradle.plugin", version.ref = "dependencyGuard" }
 gradlePlugins-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
 gradlePlugins-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradlePlugins-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
+gradlePlugins-compatPatrouille = "com.gradleup.compat.patrouille:compat-patrouille-gradle-plugin:0.0.0"
 
 junit = "junit:junit:4.13.2"
 
@@ -113,11 +117,13 @@ testParameterInjector = "com.google.testparameterinjector:test-parameter-injecto
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradlePlugin" }
-android-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-android-library = { id = "com.android.library", version.ref = "android-gradlePlugin" }
+kotlin-multiplatform  = "org.jetbrains.kotlin.multiplatform:2.1.20"
+android-kotlin-multiplatform-library = "com.android.kotlin.multiplatform.library:8.9.1"
+compat-patrouille = { id = "com.gradleup.compat.patrouille", version = "0.0.0" }
 android-lint = { id = "com.android.lint", version.ref = "android-gradlePlugin" }
 android-test = { id = "com.android.test", version.ref = "android-gradlePlugin" }
 compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+compose-multiplatform  = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 paparazzi = "app.cash.paparazzi:1.3.5"
 dependencyGuard = { id = "com.dropbox.dependency-guard", version.ref = "dependencyGuard" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }

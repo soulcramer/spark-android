@@ -25,19 +25,22 @@ import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.dsl.TestExtension
+import compat.patrouille.configureJavaCompatibility
+import compat.patrouille.configureKotlinCompatibility
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.artifacts.VersionCatalogsExtension
-import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
-import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinCommonCompilerOptions
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
+import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 
 internal val Project.isAndroidApplication: Boolean get() = pluginManager.hasPlugin("com.android.application")
 internal val Project.isAndroidLibrary: Boolean get() = pluginManager.hasPlugin("com.android.library")
@@ -70,8 +73,8 @@ internal fun Project.configureAndroid(
     configure: CommonExtension<*, *, *, *, *, *>.() -> Unit,
 ) = android {
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     configure()
 }
@@ -82,24 +85,37 @@ internal fun Project.getVersionsCatalog(): VersionCatalog = runCatching {
     throw IllegalStateException("No versions catalog found!", it)
 }.getOrThrow()
 
-internal inline fun <reified T : KotlinBaseExtension> Project.configureKotlin(
+internal inline fun <reified T : KotlinProjectExtension> Project.configureKotlin(
     crossinline configure: T.() -> Unit = {},
 ) {
-    configure<JavaPluginExtension> {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
+    configureJavaCompatibility(21)
+    configureKotlinCompatibility(spark().versions.kotlin.toString())
+
     configure<T> {
-        when (this) {
-            is KotlinAndroidProjectExtension -> compilerOptions
-            is KotlinJvmProjectExtension -> compilerOptions
-            else -> TODO("Unsupported project extension $this ${T::class}")
-        }.apply {
-            jvmTarget = JvmTarget.JVM_11
+        forEachCompilerOptions {
             allWarningsAsErrors = true
+            explicitApi()
         }
-        explicitApi()
         configure()
+    }
+}
+
+private fun KotlinProjectExtension.forEachCompilerOptions(block: KotlinCommonCompilerOptions.(platformType: KotlinPlatformType) -> Unit) {
+    when (this) {
+        is KotlinJvmProjectExtension -> compilerOptions.block(KotlinPlatformType.jvm)
+        is KotlinAndroidProjectExtension -> compilerOptions.block(KotlinPlatformType.androidJvm)
+        is KotlinMultiplatformExtension -> {
+            targets.all { target ->
+                target.compilations.all { compilation ->
+                    compilation.compileTaskProvider.configure {
+                        compilerOptions.block(target.platformType)
+                    }
+                    true
+                }
+            }
+        }
+
+        else -> error("Unknown kotlin extension $this")
     }
 }
 

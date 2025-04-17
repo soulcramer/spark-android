@@ -19,22 +19,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import kotlin.reflect.KProperty
 
 plugins {
     `kotlin-dsl`
     alias(libs.plugins.spotless)
-}
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    alias(libs.plugins.compat.patrouille)
 }
 
 kotlin {
     compilerOptions {
         allWarningsAsErrors = true
-        jvmTarget = JvmTarget.JVM_11
     }
     explicitApi()
 }
@@ -49,9 +44,11 @@ dependencies {
     compileOnly(libs.gradlePlugins.android)
     compileOnly(libs.gradlePlugins.kotlin)
     compileOnly(libs.gradlePlugins.compose)
+    compileOnly(libs.gradlePlugins.composeCompiler)
     compileOnly(libs.gradlePlugins.dependencyGuard)
     compileOnly(libs.gradlePlugins.dokka)
     compileOnly(libs.gradlePlugins.spotless)
+    implementation(libs.gradlePlugins.compatPatrouille)
     implementation(libs.dokka.base)
 }
 
@@ -65,10 +62,16 @@ gradlePlugin {
         create("com.adevinta.spark.SparkAndroidLintPlugin", id = "com.adevinta.spark.android-lint")
         create("com.adevinta.spark.SparkPublishingPlugin", id = "com.adevinta.spark.publishing")
         create("com.adevinta.spark.SparkKotlinJvmPlugin", id = "com.adevinta.spark.kotlin-jvm")
+        create("com.adevinta.spark.SparkMultiplatformPlugin", id = "com.adevinta.spark.kotlin.multiplatform")
         create("com.adevinta.spark.SparkDokkaPlugin", id = "com.adevinta.spark.dokka")
         create("com.adevinta.spark.SparkDependencyGuardPlugin", id = "com.adevinta.spark.dependencyGuard")
         create("com.adevinta.spark.SparkSpotlessPlugin", id = "com.adevinta.spark.spotless")
     }
+}
+
+compatPatrouille {
+    java(17)
+    kotlin(embeddedKotlinVersion)
 }
 
 fun NamedDomainObjectContainer<PluginDeclaration>.create(

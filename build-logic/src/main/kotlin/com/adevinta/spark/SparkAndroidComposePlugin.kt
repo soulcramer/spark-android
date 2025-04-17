@@ -23,23 +23,21 @@ package com.adevinta.spark
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.apply
-import org.gradle.kotlin.dsl.dependencies
 
 internal class SparkAndroidComposePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            apply(plugin = "org.jetbrains.kotlin.android")
-            apply(plugin = "org.jetbrains.kotlin.plugin.compose")
-            apply(plugin = "com.adevinta.spark.android")
+            pluginManager.apply("org.jetbrains.compose")
+            pluginManager.apply("org.jetbrains.kotlin.plugin.compose")
+//            pluginManager.apply("com.adevinta.spark.android")
 
-            android {
-                buildFeatures.compose = true
-            }
+//            android {
+//                buildFeatures.compose = true
+//            }
 
-            dependencies {
-                add("implementation", platform(spark().libraries.`androidx-compose-bom`))
-            }
+//            dependencies {
+//                add("implementation", platform(spark().libraries.`androidx-compose-bom`))
+//            }
         }
     }
 }
