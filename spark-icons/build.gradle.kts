@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2023 Adevinta
  *
@@ -22,7 +23,7 @@
 plugins {
     alias(libs.plugins.spark.library)
     alias(libs.plugins.spark.compose)
-//    alias(libs.plugins.spark.kotlinMultiplatform)
+    alias(libs.plugins.spark.kotlinMultiplatform)
     alias(libs.plugins.spark.dokka)
     alias(libs.plugins.spark.publishing)
     alias(libs.plugins.spark.dependencyGuard)
@@ -35,5 +36,26 @@ android {
 
 dependencies {
     implementation(compose.ui)
-    implementation(libs.androidx.appCompat.resources) // Needed for compat vector drawables
+    implementation(compose.runtime)
+    implementation(compose.components.resources)
+//    implementation(libs.androidx.appCompat.resources) // Needed for compat vector drawables
+}
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(compose.ui)
+            implementation(compose.runtime)
+            implementation(compose.components.resources)
+        }
+    }
+//    androidLibrary {
+//        experimentalProperties["android.experimental.kmp.enableAndroidResources"] = true
+//    }
+}
+
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "com.adevinta.spark.icons"
+    generateResClass = auto
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Adevinta
+ * Copyright (c) 2023-2025 Adevinta
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,10 +23,11 @@ package com.adevinta.spark.icons
 
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.vector.ImageVector
+import org.jetbrains.compose.resources.DrawableResource
 
 @Stable
 public sealed class SparkIcon {
-    public data class DrawableRes(@androidx.annotation.DrawableRes val drawableId: Int) : SparkIcon()
-    public data class AnimatedDrawableRes(@androidx.annotation.DrawableRes val drawableId: Int) : SparkIcon()
+    public data class DrawableRes(val drawableId: DrawableResource) : SparkIcon()
+    public data class AnimatedDrawableRes(val drawableId: DrawableResource) : SparkIcon()
     public data class Vector(val imageVector: ImageVector) : SparkIcon()
 }

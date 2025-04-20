@@ -200,7 +200,7 @@ private val Dropdowns = Component(
 )
 
 private val Icons = Component(
-    id = "icons",
+    id = "com/adevinta/spark/icons",
     name = "Icons",
     illustration = R.drawable.illu_component_iconbutton,
     tintIcon = false,

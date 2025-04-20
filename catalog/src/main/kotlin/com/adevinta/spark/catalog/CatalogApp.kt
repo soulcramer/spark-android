@@ -331,7 +331,7 @@ private fun getInitialScreen(uri: Uri?): CatalogHomeScreen {
         when {
             "examples" in segments -> CatalogHomeScreen.Examples
             "configurator" in segments -> CatalogHomeScreen.Configurator
-            "icons" in segments -> CatalogHomeScreen.Icons
+            "com/adevinta/spark/icons" in segments -> CatalogHomeScreen.Icons
             else -> null
         }
     }
