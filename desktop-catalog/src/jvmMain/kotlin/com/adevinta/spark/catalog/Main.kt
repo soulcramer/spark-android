@@ -1,3 +1,5 @@
+package com.adevinta.spark.catalog
+
 /*
  * Copyright (c) 2025 Adevinta
  *
