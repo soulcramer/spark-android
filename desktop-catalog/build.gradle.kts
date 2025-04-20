@@ -10,9 +10,10 @@ kotlin {
     sourceSets {
         jvmMain {
             dependencies {
-                implementation(projects.spark)
+//                implementation(projects.spark)
 //                implementation(projects.shared.qa)
                 implementation(compose.foundation)
+                implementation(compose.runtime)
                 implementation(compose.ui)
                 implementation(compose.preview)
                 implementation(compose.materialIconsExtended)

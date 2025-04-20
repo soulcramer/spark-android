@@ -19,6 +19,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 
@@ -28,8 +35,18 @@ public fun main(): Unit = application {
         title = "Spark",
         onCloseRequest = ::exitApplication,
     ) {
-        Surface(
-
-        )
+        MaterialTheme {
+            Surface(
+                modifier = Modifier.fillMaxSize()
+            ) {
+                Box {
+                    Text(
+                        text = "Catalog App",
+                        modifier = Modifier.align(Alignment.Center),
+                        style = MaterialTheme.typography.headlineLarge,
+                    )
+                }
+            }
+        }
     }
 }
