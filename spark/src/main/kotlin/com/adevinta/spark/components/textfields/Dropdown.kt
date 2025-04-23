@@ -87,7 +87,7 @@ import com.adevinta.spark.icons.CollapseExpand
 import com.adevinta.spark.icons.DeleteOutline
 import com.adevinta.spark.icons.SparkAnimatedIcons
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.SparkTypography
+import com.adevinta.spark.core.tokens.SparkTypography
 import com.adevinta.spark.tools.modifiers.sparkUsageOverlay
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf

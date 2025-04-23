@@ -58,7 +58,7 @@ import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.components.textfields.TextField
 import com.adevinta.spark.components.toggles.Switch
 import com.adevinta.spark.components.toggles.SwitchLabelled
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.highlight
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toPersistentList
 

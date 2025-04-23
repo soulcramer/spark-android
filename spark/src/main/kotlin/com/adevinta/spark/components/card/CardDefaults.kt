@@ -33,10 +33,10 @@ import com.adevinta.spark.SparkTheme
 import com.adevinta.spark.components.card.CardDefaults.OutlinedCardTokens.DisabledContainerElevation
 import com.adevinta.spark.components.card.CardDefaults.OutlinedCardTokens.DisabledOutlineOpacity
 import com.adevinta.spark.components.card.CardDefaults.OutlinedCardTokens.OutlineWidth
-import com.adevinta.spark.tokens.DisabledAlpha
-import com.adevinta.spark.tokens.ElevationTokens
-import com.adevinta.spark.tokens.contentColorFor
-import com.adevinta.spark.tokens.surfaceColorAtElevation
+import com.adevinta.spark.core.tokens.DisabledAlpha
+import com.adevinta.spark.core.tokens.ElevationTokens
+import com.adevinta.spark.core.tokens.contentColorFor
+import com.adevinta.spark.core.tokens.surfaceColorAtElevation
 
 public object CardDefaults {
     @Composable

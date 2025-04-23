@@ -71,9 +71,9 @@ import com.adevinta.spark.icons.LikeToFill
 import com.adevinta.spark.icons.MessageToOutline
 import com.adevinta.spark.icons.SearchToOutline
 import com.adevinta.spark.icons.SparkAnimatedIcons
-import com.adevinta.spark.tokens.disabled
-import com.adevinta.spark.tokens.highlight
-import com.adevinta.spark.tokens.ripple
+import com.adevinta.spark.core.tokens.disabled
+import com.adevinta.spark.core.tokens.highlight
+import com.adevinta.spark.core.tokens.ripple
 import kotlin.math.roundToInt
 
 private const val IconsExampleSourceUrl = "$SampleSourceUrl/IconsSamples.kt"

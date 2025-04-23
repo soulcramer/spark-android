@@ -228,7 +228,7 @@ public object SparkButtonDefaults {
     /**
      * The default size of the icon when used inside a [SparkButtonTags].
      */
-    public val IconDefaultSize: IconSize = com.adevinta.spark.components.icons.IconSize.Small
+    public val IconDefaultSize: IconSize = IconSize.Small
 
     /**
      * The default size of the spacing between an icon and a text when they used inside a [SparkButtonTags].

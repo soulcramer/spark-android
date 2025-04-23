@@ -59,7 +59,7 @@ import androidx.compose.ui.node.Ref
 import androidx.compose.ui.platform.debugInspectorInfo
 import androidx.compose.ui.unit.LayoutDirection
 import com.adevinta.spark.SparkTheme
-import com.adevinta.spark.tokens.contentColorFor
+import com.adevinta.spark.core.tokens.contentColorFor
 
 /**
  * Contains default values used by [Modifier.placeholder] and [PlaceholderHighlight].

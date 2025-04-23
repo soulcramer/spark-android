@@ -56,7 +56,7 @@ import com.adevinta.spark.components.icons.IconButton
 import com.adevinta.spark.components.surface.Surface
 import com.adevinta.spark.icons.BurgerMenu
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.contentColorFor
+import com.adevinta.spark.core.tokens.contentColorFor
 import androidx.compose.material3.Scaffold as MaterialScaffold
 
 /**

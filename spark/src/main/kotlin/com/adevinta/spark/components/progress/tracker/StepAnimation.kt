@@ -37,8 +37,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.adevinta.spark.tokens.ElevationTokens
-import com.adevinta.spark.tokens.animateElevation
+import com.adevinta.spark.core.tokens.ElevationTokens
+import com.adevinta.spark.core.tokens.animateElevation
 
 @Composable
 internal fun animateStepElevation(

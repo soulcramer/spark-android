@@ -77,7 +77,7 @@ import com.adevinta.spark.components.bottomsheet.layout.SwipeableDefaults
 import com.adevinta.spark.components.snackbars.SnackbarHost
 import com.adevinta.spark.components.snackbars.SnackbarHostState
 import com.adevinta.spark.components.surface.Surface
-import com.adevinta.spark.tokens.contentColorFor
+import com.adevinta.spark.core.tokens.contentColorFor
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 import kotlin.math.abs

@@ -58,8 +58,8 @@ import com.adevinta.spark.components.surface.Surface
 import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.icons.Close
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.ElevationTokens
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.ElevationTokens
+import com.adevinta.spark.core.tokens.highlight
 import com.adevinta.spark.tools.modifiers.sparkUsageOverlay
 import kotlinx.coroutines.launch
 

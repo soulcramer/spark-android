@@ -46,12 +46,12 @@ android {
 
     compileOptions.isCoreLibraryDesugaringEnabled = true
 
-    kotlinOptions {
-        freeCompilerArgs += listOf(
-            "-opt-in=com.adevinta.spark.InternalSparkApi",
-            "-opt-in=com.adevinta.spark.ExperimentalSparkApi",
-        )
-    }
+//    kotlinOptions {
+//        freeCompilerArgs += listOf(
+//            "-opt-in=com.adevinta.spark.InternalSparkApi",
+//            "-opt-in=com.adevinta.spark.ExperimentalSparkApi",
+//        )
+//    }
 
     val keystore = rootProject.file("keystore.properties")
         .takeIf { it.exists() }

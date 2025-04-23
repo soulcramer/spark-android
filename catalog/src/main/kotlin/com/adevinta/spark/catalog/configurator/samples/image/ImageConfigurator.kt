@@ -76,7 +76,7 @@ import com.adevinta.spark.components.textfields.SingleChoiceDropdown
 import com.adevinta.spark.components.textfields.TextField
 import com.adevinta.spark.components.toggles.SwitchLabelled
 import com.adevinta.spark.res.annotatedStringResource
-import com.adevinta.spark.tokens.LocalWindowSizeClass
+import com.adevinta.spark.core.tokens.LocalWindowSizeClass
 import com.adevinta.spark.tools.modifiers.ifTrue
 import com.google.accompanist.drawablepainter.rememberDrawablePainter
 

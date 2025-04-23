@@ -24,9 +24,9 @@ package com.adevinta.spark.catalog.themes.themeprovider.kleinanzeigen
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import com.adevinta.spark.catalog.themes.themeprovider.ThemeProvider
-import com.adevinta.spark.tokens.SparkColors
-import com.adevinta.spark.tokens.SparkShapes
-import com.adevinta.spark.tokens.SparkTypography
+import com.adevinta.spark.core.tokens.SparkColors
+import com.adevinta.spark.core.tokens.SparkShapes
+import com.adevinta.spark.core.tokens.SparkTypography
 
 public object KleinanzeigenTheme : ThemeProvider {
     @Composable

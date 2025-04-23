@@ -54,7 +54,7 @@ import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.icons.MoreMenuVertical
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.contentColorFor
+import com.adevinta.spark.core.tokens.contentColorFor
 
 @Composable
 internal fun SparkNavigationBar(

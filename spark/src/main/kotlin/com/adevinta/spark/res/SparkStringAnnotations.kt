@@ -24,8 +24,8 @@ package com.adevinta.spark.res
 import android.text.Annotation
 import android.util.Log
 import androidx.compose.ui.text.SpanStyle
-import com.adevinta.spark.tokens.SparkColors
-import com.adevinta.spark.tokens.SparkTypography
+import com.adevinta.spark.core.tokens.SparkColors
+import com.adevinta.spark.core.tokens.SparkTypography
 
 /**
  * Represents a set of annotations supported by spark that can be used in a string resource.

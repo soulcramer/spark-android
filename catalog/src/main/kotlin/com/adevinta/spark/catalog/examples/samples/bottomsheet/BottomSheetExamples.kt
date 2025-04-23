@@ -62,7 +62,7 @@ import com.adevinta.spark.components.text.TextLinkButton
 import com.adevinta.spark.icons.LikeFill
 import com.adevinta.spark.icons.SparkIcons
 import com.adevinta.spark.icons.Store
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.highlight
 import kotlinx.coroutines.launch
 
 private const val BottomSheetExampleSourceUrl = "$SparkSampleSourceUrl/bottomsheet/BottomSheetExamples.kt"

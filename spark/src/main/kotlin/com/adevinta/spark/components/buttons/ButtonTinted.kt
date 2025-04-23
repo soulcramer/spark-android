@@ -39,7 +39,7 @@ import com.adevinta.spark.SparkTheme
 import com.adevinta.spark.icons.IdentityOutline
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.disabled
+import com.adevinta.spark.core.tokens.disabled
 
 /**
  * Tinted buttons are medium-emphasis buttons that is an alternative middle ground between

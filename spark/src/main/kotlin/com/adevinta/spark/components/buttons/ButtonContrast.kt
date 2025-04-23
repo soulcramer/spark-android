@@ -40,8 +40,8 @@ import com.adevinta.spark.icons.IdentityOutline
 import com.adevinta.spark.icons.Link
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.dim3
-import com.adevinta.spark.tokens.disabled
+import com.adevinta.spark.core.tokens.dim3
+import com.adevinta.spark.core.tokens.disabled
 
 /**
  * Ghost buttons are used for the lowest priority actions, especially when presenting multiple options.

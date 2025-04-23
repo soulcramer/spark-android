@@ -39,8 +39,8 @@ import com.adevinta.spark.SparkTheme
 import com.adevinta.spark.icons.IdentityOutline
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.dim3
-import com.adevinta.spark.tokens.disabled
+import com.adevinta.spark.core.tokens.dim3
+import com.adevinta.spark.core.tokens.disabled
 
 /**
  * The filled button should only be used once per view (not including a modal dialog),

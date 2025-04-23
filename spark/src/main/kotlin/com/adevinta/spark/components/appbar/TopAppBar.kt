@@ -96,9 +96,9 @@ import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.icons.BurgerMenu
 import com.adevinta.spark.icons.CameraFill
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.ElevationTokens
-import com.adevinta.spark.tokens.applyTonalElevation
-import com.adevinta.spark.tokens.contentColorFor
+import com.adevinta.spark.core.tokens.ElevationTokens
+import com.adevinta.spark.core.tokens.applyTonalElevation
+import com.adevinta.spark.core.tokens.contentColorFor
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.roundToInt

@@ -24,7 +24,7 @@ package com.adevinta.spark.catalog.themes.themeprovider.kleinanzeigen
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.unit.dp
-import com.adevinta.spark.tokens.sparkShapes
+import com.adevinta.spark.core.tokens.sparkShapes
 
 internal val KleinanzeigenShapes = sparkShapes(
     none = RoundedCornerShape(0.dp),

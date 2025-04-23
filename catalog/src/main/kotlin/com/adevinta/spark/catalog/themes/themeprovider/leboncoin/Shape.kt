@@ -21,6 +21,6 @@
  */
 package com.adevinta.spark.catalog.themes.themeprovider.leboncoin
 
-import com.adevinta.spark.tokens.sparkShapes
+import com.adevinta.spark.core.tokens.sparkShapes
 
 internal val LeboncoinShapes = sparkShapes()

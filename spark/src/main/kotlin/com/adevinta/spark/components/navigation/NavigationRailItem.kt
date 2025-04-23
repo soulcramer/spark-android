@@ -43,7 +43,7 @@ import com.adevinta.spark.icons.House
 import com.adevinta.spark.icons.Search
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.highlight
 import androidx.compose.material3.NavigationRailItem as MaterialNavigationRailItem
 import androidx.compose.material3.NavigationRailItemDefaults as MaterialNavigationRailItemDefaults
 

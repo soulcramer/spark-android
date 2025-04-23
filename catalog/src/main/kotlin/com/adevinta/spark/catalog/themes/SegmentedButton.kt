@@ -61,7 +61,7 @@ import androidx.compose.ui.unit.dp
 import com.adevinta.spark.SparkTheme
 import com.adevinta.spark.catalog.util.PreviewTheme
 import com.adevinta.spark.components.text.Text
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.highlight
 
 @Composable
 internal fun SegmentedButton(

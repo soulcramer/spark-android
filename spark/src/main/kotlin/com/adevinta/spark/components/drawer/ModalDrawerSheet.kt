@@ -47,8 +47,8 @@ import androidx.compose.ui.unit.dp
 import com.adevinta.spark.ExperimentalSparkApi
 import com.adevinta.spark.PreviewTheme
 import com.adevinta.spark.SparkTheme
-import com.adevinta.spark.tokens.SparkShapes
-import com.adevinta.spark.tokens.contentColorFor
+import com.adevinta.spark.core.tokens.SparkShapes
+import com.adevinta.spark.core.tokens.contentColorFor
 
 @ExperimentalSparkApi
 @Composable

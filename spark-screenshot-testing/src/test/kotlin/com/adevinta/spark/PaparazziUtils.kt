@@ -31,8 +31,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalInspectionMode
 import app.cash.paparazzi.Paparazzi
-import com.adevinta.spark.tokens.darkSparkColors
-import com.adevinta.spark.tokens.lightSparkColors
+import com.adevinta.spark.core.tokens.darkSparkColors
+import com.adevinta.spark.core.tokens.lightSparkColors
 
 internal fun Paparazzi.sparkSnapshot(
     name: String? = null,
@@ -42,7 +42,7 @@ internal fun Paparazzi.sparkSnapshot(
 ): Unit = snapshot(name) {
     // Behave like in Android Studio Preview renderer
     CompositionLocalProvider(LocalInspectionMode provides true) {
-        SparkTheme(
+        com.adevinta.spark.SparkTheme(
             colors = if (isDark) darkSparkColors() else lightSparkColors(),
         ) {
             // The first box acts as a shield from ComposeView which forces the first layout node
@@ -68,7 +68,7 @@ internal fun Paparazzi.gifView(
     view.setContent {
         // Behave like in Android Studio Preview renderer
         CompositionLocalProvider(LocalInspectionMode provides true) {
-            SparkTheme(
+            com.adevinta.spark.SparkTheme(
                 colors = if (isDark) darkSparkColors() else lightSparkColors(),
             ) {
                 // The first box acts as a shield from ComposeView which forces the first layout node

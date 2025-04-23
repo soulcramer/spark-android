@@ -29,7 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.adevinta.spark.InternalSparkApi
 import com.adevinta.spark.PreviewTheme
 import com.adevinta.spark.SparkTheme
-import com.adevinta.spark.tokens.dim4
+import com.adevinta.spark.core.tokens.dim4
 import com.adevinta.spark.tools.modifiers.sparkUsageOverlay
 import androidx.compose.material3.LinearProgressIndicator as MaterialProgressbar
 

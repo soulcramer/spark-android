@@ -98,7 +98,7 @@ import com.adevinta.spark.catalog.ui.BackdropValue
 import com.adevinta.spark.catalog.ui.rememberBackdropScaffoldState
 import com.adevinta.spark.catalog.ui.shaders.colorblindness.ColorBlindNessType
 import com.adevinta.spark.catalog.ui.shaders.colorblindness.shader
-import com.adevinta.spark.tokens.asSparkColors
+import com.adevinta.spark.core.tokens.asSparkColors
 import kotlinx.coroutines.launch
 
 @Composable

@@ -41,7 +41,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.unit.Dp
-import com.adevinta.spark.tokens.animateElevation
+import com.adevinta.spark.core.tokens.animateElevation
 
 /**
  * Represents the elevation for a card in different states.

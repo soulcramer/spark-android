@@ -41,7 +41,7 @@ import com.adevinta.spark.catalog.model.Example
 import com.adevinta.spark.components.scaffold.Scaffold
 import com.adevinta.spark.components.snackbars.SnackbarHost
 import com.adevinta.spark.components.snackbars.SnackbarHostState
-import com.adevinta.spark.tokens.Layout
+import com.adevinta.spark.core.tokens.Layout
 
 /**
  * Displays an example content based on the provided [Example] data model.

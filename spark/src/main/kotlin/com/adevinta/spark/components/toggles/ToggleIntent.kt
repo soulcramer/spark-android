@@ -30,7 +30,7 @@ import androidx.compose.runtime.Composable
 import com.adevinta.spark.SparkTheme
 import com.adevinta.spark.components.IntentColor
 import com.adevinta.spark.components.IntentColors
-import com.adevinta.spark.tokens.disabled
+import com.adevinta.spark.core.tokens.disabled
 
 public enum class ToggleIntent {
     /**

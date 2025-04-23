@@ -42,7 +42,7 @@ import com.adevinta.spark.components.menu.DropdownMenuItem
 import com.adevinta.spark.components.surface.Surface
 import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.components.textfields.SingleChoiceDropdown
-import com.adevinta.spark.tokens.Order
+import com.adevinta.spark.core.tokens.Order
 import kotlin.reflect.full.declaredMemberProperties
 import kotlin.reflect.full.findAnnotation
 

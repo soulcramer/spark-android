@@ -83,7 +83,7 @@ import com.adevinta.spark.icons.Check
 import com.adevinta.spark.icons.EyeOutline
 import com.adevinta.spark.icons.MailOutline
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.ElevationTokens
+import com.adevinta.spark.core.tokens.ElevationTokens
 import kotlinx.coroutines.delay
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter

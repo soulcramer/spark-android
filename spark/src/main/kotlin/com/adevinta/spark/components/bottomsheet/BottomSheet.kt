@@ -66,7 +66,7 @@ import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.components.toggles.CheckboxLabelled
 import com.adevinta.spark.icons.LikeFill
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.contentColorFor
+import com.adevinta.spark.core.tokens.contentColorFor
 import com.adevinta.spark.tools.modifiers.sparkUsageOverlay
 import kotlinx.coroutines.launch
 

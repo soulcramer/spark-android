@@ -66,8 +66,8 @@ import androidx.core.text.toHtml
 import com.adevinta.spark.PreviewTheme
 import com.adevinta.spark.R
 import com.adevinta.spark.SparkTheme
-import com.adevinta.spark.tokens.SparkColors
-import com.adevinta.spark.tokens.SparkTypography
+import com.adevinta.spark.core.tokens.SparkColors
+import com.adevinta.spark.core.tokens.SparkTypography
 import kotlinx.collections.immutable.PersistentMap
 import kotlinx.collections.immutable.persistentMapOf
 

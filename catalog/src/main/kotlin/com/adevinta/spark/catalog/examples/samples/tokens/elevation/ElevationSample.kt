@@ -40,7 +40,7 @@ import com.adevinta.spark.SparkTheme
 import com.adevinta.spark.catalog.util.PreviewTheme
 import com.adevinta.spark.components.surface.Surface
 import com.adevinta.spark.components.text.Text
-import com.adevinta.spark.tokens.ElevationTokens
+import com.adevinta.spark.core.tokens.ElevationTokens
 
 @Composable
 internal fun ColumnScope.ElevationSample() {

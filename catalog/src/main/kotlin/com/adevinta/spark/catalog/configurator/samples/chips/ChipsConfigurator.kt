@@ -52,7 +52,7 @@ import com.adevinta.spark.components.toggles.SwitchLabelled
 import com.adevinta.spark.icons.LikeFill
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.highlight
 
 public val ChipsConfigurator: Configurator = Configurator(
     id = "chip",

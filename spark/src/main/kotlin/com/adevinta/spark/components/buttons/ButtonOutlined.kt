@@ -38,7 +38,7 @@ import com.adevinta.spark.icons.CameraFill
 import com.adevinta.spark.icons.IdentityOutline
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.disabled
+import com.adevinta.spark.core.tokens.disabled
 
 /**
  * Outlined buttons are used for support actions. The outlined styling places less emphasis on these actions that are `

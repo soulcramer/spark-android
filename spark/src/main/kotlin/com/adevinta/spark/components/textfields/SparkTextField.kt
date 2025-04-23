@@ -78,7 +78,7 @@ import com.adevinta.spark.PreviewTheme
 import com.adevinta.spark.R
 import com.adevinta.spark.SparkTheme
 import com.adevinta.spark.components.icons.Icon
-import com.adevinta.spark.tokens.EmphasizeDim3
+import com.adevinta.spark.core.tokens.EmphasizeDim3
 import com.adevinta.spark.tools.modifiers.SlotArea
 import com.adevinta.spark.tools.modifiers.sparkUsageOverlay
 

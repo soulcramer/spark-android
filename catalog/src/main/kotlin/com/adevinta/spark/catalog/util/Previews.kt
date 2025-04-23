@@ -31,10 +31,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.adevinta.spark.PreviewWrapper
 import com.adevinta.spark.SparkTheme
-import com.adevinta.spark.tokens.darkSparkColors
-import com.adevinta.spark.tokens.lightSparkColors
-import com.adevinta.spark.tokens.sparkShapes
-import com.adevinta.spark.tokens.sparkTypography
+import com.adevinta.spark.core.tokens.darkSparkColors
+import com.adevinta.spark.core.tokens.lightSparkColors
+import com.adevinta.spark.core.tokens.sparkShapes
+import com.adevinta.spark.core.tokens.sparkTypography
 
 @Suppress("ComposeModifierMissing") // It's okay since it’s a base theme
 @Composable

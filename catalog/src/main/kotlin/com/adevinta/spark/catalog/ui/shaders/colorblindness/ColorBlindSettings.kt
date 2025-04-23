@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import com.adevinta.spark.SparkTheme
 import com.adevinta.spark.catalog.ui.ButtonGroup
 import com.adevinta.spark.catalog.util.PreviewTheme
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.highlight
 import org.intellij.lang.annotations.Language
 import kotlin.math.roundToInt
 

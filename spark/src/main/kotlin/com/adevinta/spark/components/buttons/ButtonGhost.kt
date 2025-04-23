@@ -41,7 +41,7 @@ import com.adevinta.spark.icons.IdentityOutline
 import com.adevinta.spark.icons.Link
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.disabled
+import com.adevinta.spark.core.tokens.disabled
 
 /**
  * The ghost button is the button for non important actions. The mandatory icon help to indicate that it's a

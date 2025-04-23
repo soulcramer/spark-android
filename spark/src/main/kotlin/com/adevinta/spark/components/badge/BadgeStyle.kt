@@ -25,7 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.adevinta.spark.SparkTheme
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.highlight
 
 /**
  * @param size size of the badge

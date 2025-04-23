@@ -35,7 +35,7 @@ import androidx.compose.ui.graphics.Shape
 import com.adevinta.spark.ExperimentalSparkApi
 import com.adevinta.spark.SparkTheme
 import com.adevinta.spark.components.buttons.ButtonShape
-import com.adevinta.spark.tokens.contentColorFor
+import com.adevinta.spark.core.tokens.contentColorFor
 import androidx.compose.material3.FilledIconToggleButton as MaterialFilledIconToggleButton
 import androidx.compose.material3.FilledTonalIconToggleButton as MaterialFilledTonalIconToggleButton
 import androidx.compose.material3.IconToggleButton as MaterialIconToggleButton

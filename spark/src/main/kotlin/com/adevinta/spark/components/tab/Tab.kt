@@ -52,7 +52,7 @@ import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.icons.AccountFill
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.disabled
+import com.adevinta.spark.core.tokens.disabled
 import com.adevinta.spark.tools.modifiers.ifNotNull
 import com.adevinta.spark.tools.modifiers.ifNull
 import com.adevinta.spark.tools.modifiers.sparkUsageOverlay

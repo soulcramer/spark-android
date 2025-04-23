@@ -22,9 +22,9 @@
 package com.adevinta.spark.catalog.themes.themeprovider.kleinanzeigen
 
 import androidx.compose.ui.graphics.Color
-import com.adevinta.spark.tokens.SparkColors
-import com.adevinta.spark.tokens.darkSparkColors
-import com.adevinta.spark.tokens.lightSparkColors
+import com.adevinta.spark.core.tokens.SparkColors
+import com.adevinta.spark.core.tokens.darkSparkColors
+import com.adevinta.spark.core.tokens.lightSparkColors
 
 // Brand Palette
 private val Neutral50 = Color(0xFFF7F7F7)

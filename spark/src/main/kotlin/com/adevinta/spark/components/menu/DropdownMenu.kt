@@ -79,11 +79,11 @@ import com.adevinta.spark.icons.MailOutline
 import com.adevinta.spark.icons.PenFill
 import com.adevinta.spark.icons.SparkIcons
 import com.adevinta.spark.icons.WheelOutline
-import com.adevinta.spark.tokens.ElevationTokens
-import com.adevinta.spark.tokens.EmphasizeDim1
-import com.adevinta.spark.tokens.SparkColors
-import com.adevinta.spark.tokens.SparkTypography
-import com.adevinta.spark.tokens.ripple
+import com.adevinta.spark.core.tokens.ElevationTokens
+import com.adevinta.spark.core.tokens.EmphasizeDim1
+import com.adevinta.spark.core.tokens.SparkColors
+import com.adevinta.spark.core.tokens.SparkTypography
+import com.adevinta.spark.core.tokens.ripple
 import com.adevinta.spark.tools.modifiers.sparkUsageOverlay
 import androidx.compose.material3.DropdownMenu as MaterialDropdownMenu
 

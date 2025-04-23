@@ -75,7 +75,7 @@ import com.adevinta.spark.icons.DeleteOutline
 import com.adevinta.spark.icons.OfferOutline
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.ripple
+import com.adevinta.spark.core.tokens.ripple
 import com.adevinta.spark.tools.modifiers.dashedBorder
 import com.adevinta.spark.tools.modifiers.ifTrue
 import com.adevinta.spark.tools.modifiers.minimumTouchTargetSize

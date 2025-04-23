@@ -44,7 +44,7 @@ import com.adevinta.spark.components.icons.IconSize
 import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.icons.LikeFill
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.SparkTypography
+import com.adevinta.spark.core.tokens.SparkTypography
 import kotlinx.coroutines.flow.flowOf
 
 /**

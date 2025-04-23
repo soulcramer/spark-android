@@ -38,7 +38,7 @@ import com.adevinta.spark.components.divider.VerticalDivider
 import com.adevinta.spark.components.spacer.HorizontalSpacer
 import com.adevinta.spark.components.spacer.VerticalSpacer
 import com.adevinta.spark.components.text.Text
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.highlight
 
 private const val DividerExampleDescription = "Divider examples"
 private const val DividerExampleSourceUrl = "$SampleSourceUrl/DividerSamples.kt"

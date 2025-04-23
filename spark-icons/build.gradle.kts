@@ -47,6 +47,7 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.runtime)
             implementation(compose.components.resources)
+            api(compose.animationGraphics)
         }
     }
 //    androidLibrary {

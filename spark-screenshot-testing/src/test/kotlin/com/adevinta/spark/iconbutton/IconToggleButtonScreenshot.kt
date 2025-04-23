@@ -40,7 +40,6 @@ import com.adevinta.spark.components.iconbuttons.toggle.IconToggleButtonGhost
 import com.adevinta.spark.components.iconbuttons.toggle.IconToggleButtonIcons
 import com.adevinta.spark.components.iconbuttons.toggle.IconToggleButtonOutlined
 import com.adevinta.spark.components.iconbuttons.toggle.IconToggleButtonTinted
-import com.adevinta.spark.components.icons.IconDefaults.intent
 import com.adevinta.spark.components.surface.Surface
 import com.adevinta.spark.icons.AccountFill
 import com.adevinta.spark.icons.AccountOutline

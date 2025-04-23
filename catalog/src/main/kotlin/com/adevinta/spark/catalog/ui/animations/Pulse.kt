@@ -45,7 +45,7 @@ import com.adevinta.spark.SparkTheme
 import com.adevinta.spark.catalog.util.PreviewTheme
 import com.adevinta.spark.components.buttons.ButtonIntent
 import com.adevinta.spark.components.buttons.ButtonTinted
-import com.adevinta.spark.tokens.dim3
+import com.adevinta.spark.core.tokens.dim3
 
 /**
  * Applies a pulsating effect that is drawn behind the composable element. This effect creates

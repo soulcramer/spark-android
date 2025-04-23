@@ -24,7 +24,7 @@ package com.adevinta.spark.catalog.themes.themeprovider.milanuncios
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.unit.dp
-import com.adevinta.spark.tokens.sparkShapes
+import com.adevinta.spark.core.tokens.sparkShapes
 
 internal val MilanunciosShapes = sparkShapes(
     none = RoundedCornerShape(0.dp),

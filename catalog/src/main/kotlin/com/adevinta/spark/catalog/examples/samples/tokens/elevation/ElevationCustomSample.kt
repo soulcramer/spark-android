@@ -48,8 +48,8 @@ import com.adevinta.spark.components.slider.Slider
 import com.adevinta.spark.components.surface.Surface
 import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.components.textfields.SingleChoiceDropdown
-import com.adevinta.spark.tokens.ElevationTokens
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.ElevationTokens
+import com.adevinta.spark.core.tokens.highlight
 import kotlin.math.roundToInt
 
 @Composable

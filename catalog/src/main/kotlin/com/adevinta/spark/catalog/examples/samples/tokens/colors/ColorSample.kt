@@ -40,8 +40,8 @@ import com.adevinta.spark.catalog.util.cast
 import com.adevinta.spark.catalog.util.splitCamelWithSpaces
 import com.adevinta.spark.components.surface.Surface
 import com.adevinta.spark.components.text.Text
-import com.adevinta.spark.tokens.Order
-import com.adevinta.spark.tokens.SparkColors
+import com.adevinta.spark.core.tokens.Order
+import com.adevinta.spark.core.tokens.SparkColors
 import kotlin.reflect.KProperty1
 import kotlin.reflect.full.declaredMemberProperties
 import kotlin.reflect.full.findAnnotation

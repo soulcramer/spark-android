@@ -61,7 +61,7 @@ import com.adevinta.spark.components.toggles.SwitchLabelled
 import com.adevinta.spark.icons.BurgerMenu
 import com.adevinta.spark.icons.SparkIcons
 import com.adevinta.spark.icons.Store
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.highlight
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

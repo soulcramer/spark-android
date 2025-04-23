@@ -85,9 +85,9 @@ import com.adevinta.spark.icons.Close
 import com.adevinta.spark.icons.ImageFill
 import com.adevinta.spark.icons.MoreMenuVertical
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.Layout
-import com.adevinta.spark.tokens.LocalWindowSizeClass
-import com.adevinta.spark.tokens.bodyWidth
+import com.adevinta.spark.core.tokens.Layout
+import com.adevinta.spark.core.tokens.LocalWindowSizeClass
+import com.adevinta.spark.core.tokens.bodyWidth
 import com.adevinta.spark.tools.preview.DevicePreviews
 
 /**

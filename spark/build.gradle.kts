@@ -55,6 +55,7 @@ dependencies {
     lintChecks(libs.slack.lint.compose)
 
     api(projects.sparkIcons)
+    api(projects.sparkCore)
 
     implementation(libs.accompanist.drawablepainter)
 

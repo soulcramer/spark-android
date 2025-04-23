@@ -25,9 +25,9 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
-import com.adevinta.spark.tokens.dim3
-import com.adevinta.spark.tokens.disabled
-import com.adevinta.spark.tokens.transparent
+import com.adevinta.spark.core.tokens.dim3
+import com.adevinta.spark.core.tokens.disabled
+import com.adevinta.spark.core.tokens.transparent
 
 public enum class ChipStyles {
     Outlined {

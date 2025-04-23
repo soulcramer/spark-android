@@ -38,7 +38,7 @@ import com.adevinta.spark.components.tags.TagFilled
 import com.adevinta.spark.components.tags.TagIntent
 import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.components.textfields.Dropdown
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.highlight
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 

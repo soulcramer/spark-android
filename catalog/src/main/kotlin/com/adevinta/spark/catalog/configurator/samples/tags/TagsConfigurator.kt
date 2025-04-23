@@ -55,7 +55,7 @@ import com.adevinta.spark.components.textfields.TextField
 import com.adevinta.spark.icons.LikeFill
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.highlight
 
 public val TagsConfigurator: Configurator = Configurator(
     id = "tag",

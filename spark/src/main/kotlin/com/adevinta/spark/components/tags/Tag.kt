@@ -60,8 +60,8 @@ import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.icons.Accessories
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.contentColorFor
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.contentColorFor
+import com.adevinta.spark.core.tokens.highlight
 import com.adevinta.spark.tools.modifiers.SlotArea
 import com.adevinta.spark.tools.modifiers.sparkUsageOverlay
 

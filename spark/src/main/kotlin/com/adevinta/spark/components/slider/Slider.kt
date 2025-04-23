@@ -63,10 +63,10 @@ import com.adevinta.spark.ExperimentalSparkApi
 import com.adevinta.spark.InternalSparkApi
 import com.adevinta.spark.PreviewTheme
 import com.adevinta.spark.SparkTheme
-import com.adevinta.spark.tokens.dim3
-import com.adevinta.spark.tokens.dim4
-import com.adevinta.spark.tokens.ripple
-import com.adevinta.spark.tokens.transparent
+import com.adevinta.spark.core.tokens.dim3
+import com.adevinta.spark.core.tokens.dim4
+import com.adevinta.spark.core.tokens.ripple
+import com.adevinta.spark.core.tokens.transparent
 import com.adevinta.spark.tools.modifiers.sparkUsageOverlay
 import androidx.compose.material3.Slider as MaterialSlider
 

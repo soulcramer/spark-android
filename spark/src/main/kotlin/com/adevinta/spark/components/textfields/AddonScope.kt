@@ -72,7 +72,7 @@ import com.adevinta.spark.icons.EyeOffFill
 import com.adevinta.spark.icons.QuestionOutline
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.SparkColors
+import com.adevinta.spark.core.tokens.SparkColors
 import kotlin.random.Random
 import androidx.compose.material3.FilledTonalButton as MaterialButton
 

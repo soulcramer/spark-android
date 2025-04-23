@@ -45,7 +45,6 @@ import androidx.compose.ui.test.requestFocus
 import androidx.compose.ui.test.withKeyDown
 import com.adevinta.spark.PreviewTheme
 import com.adevinta.spark.components.stepper.Stepper
-import com.ibm.icu.impl.SimpleFormatterImpl.IterInternal.step
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

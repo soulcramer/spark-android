@@ -22,9 +22,9 @@
 package com.adevinta.spark.catalog.themes.themeprovider
 
 import androidx.compose.runtime.Composable
-import com.adevinta.spark.tokens.SparkColors
-import com.adevinta.spark.tokens.SparkShapes
-import com.adevinta.spark.tokens.SparkTypography
+import com.adevinta.spark.core.tokens.SparkColors
+import com.adevinta.spark.core.tokens.SparkShapes
+import com.adevinta.spark.core.tokens.SparkTypography
 
 public interface ThemeProvider {
     @Composable

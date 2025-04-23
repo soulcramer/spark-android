@@ -39,7 +39,7 @@ import com.adevinta.spark.components.bottomsheet.SheetDefaults.DragHandleHeight
 import com.adevinta.spark.components.bottomsheet.SheetDefaults.DragHandleTopPadding
 import com.adevinta.spark.components.bottomsheet.SheetDefaults.DragHandleWidth
 import com.adevinta.spark.components.surface.Surface
-import com.adevinta.spark.tokens.dim1
+import com.adevinta.spark.core.tokens.dim1
 import com.adevinta.spark.tools.modifiers.sparkUsageOverlay
 
 /**

@@ -66,7 +66,7 @@ import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.icons.Computer
 import com.adevinta.spark.icons.Link
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.Layout
+import com.adevinta.spark.core.tokens.Layout
 
 @Composable
 public fun ConfiguratorComponentScreen(

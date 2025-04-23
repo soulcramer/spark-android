@@ -53,8 +53,8 @@ import com.adevinta.spark.catalog.util.PreviewTheme
 import com.adevinta.spark.components.slider.Slider
 import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.components.toggles.SwitchLabelled
-import com.adevinta.spark.tokens.Layout
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.Layout
+import com.adevinta.spark.core.tokens.highlight
 
 @Composable
 public fun ThemePicker(

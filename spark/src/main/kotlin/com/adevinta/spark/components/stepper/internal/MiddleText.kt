@@ -52,7 +52,7 @@ import com.adevinta.spark.components.stepper.StepperDefaults
 import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.components.textfields.DefaultSparkTextFieldColors
 import com.adevinta.spark.components.textfields.sparkOutlinedTextFieldColors
-import com.adevinta.spark.tokens.dim3
+import com.adevinta.spark.core.tokens.dim3
 import java.text.NumberFormat
 
 @OptIn(ExperimentalMaterial3Api::class)

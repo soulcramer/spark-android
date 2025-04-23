@@ -33,8 +33,8 @@ import com.adevinta.spark.components.IntentColor
 import com.adevinta.spark.components.buttons.ButtonShape
 import com.adevinta.spark.components.snackbars.SnackbarIntent
 import com.adevinta.spark.components.snackbars.SnackbarStyle
-import com.adevinta.spark.tokens.contentColorFor
-import com.adevinta.spark.tokens.dim3
+import com.adevinta.spark.core.tokens.contentColorFor
+import com.adevinta.spark.core.tokens.dim3
 
 internal object IconButtonDefaults {
 

@@ -25,8 +25,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.adevinta.spark.tokens.SparkTypography
-import com.adevinta.spark.tokens.sparkTypography
+import com.adevinta.spark.core.tokens.SparkTypography
+import com.adevinta.spark.core.tokens.sparkTypography
 
 private val display1Type = TextStyle(
     fontFamily = FontFamily.Default,

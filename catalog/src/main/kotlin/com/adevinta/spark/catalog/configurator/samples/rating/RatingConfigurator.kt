@@ -50,7 +50,7 @@ import com.adevinta.spark.components.slider.Slider
 import com.adevinta.spark.components.surface.Surface
 import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.components.toggles.SwitchLabelled
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.highlight
 
 public val RatingsConfigurator: Configurator = Configurator(
     id = "rating",

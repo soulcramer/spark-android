@@ -50,7 +50,7 @@ import com.adevinta.spark.catalog.themes.NavigationMode
 import com.adevinta.spark.catalog.ui.navigation.ChangeSelectedNavControllerOnPageChange
 import com.adevinta.spark.catalog.ui.navigation.NavHostSpark
 import com.adevinta.spark.components.text.Text
-import com.adevinta.spark.tokens.Layout
+import com.adevinta.spark.core.tokens.Layout
 
 @Composable
 public fun ConfiguratorComponentsScreen(

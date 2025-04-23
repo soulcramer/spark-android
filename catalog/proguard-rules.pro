@@ -21,6 +21,6 @@
 }
 
 # Keep colors as we use reflection to display them in examples
--keepclasseswithmembers class com.adevinta.spark.tokens.SparkColors {
+-keepclasseswithmembers class com.adevinta.spark.core.tokens.SparkColors {
     *;
 }

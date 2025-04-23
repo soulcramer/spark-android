@@ -75,10 +75,10 @@ import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.components.textfields.LabelId
 import com.adevinta.spark.icons.Check
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.dim1
-import com.adevinta.spark.tokens.disabled
-import com.adevinta.spark.tokens.highlight
-import com.adevinta.spark.tokens.transparent
+import com.adevinta.spark.core.tokens.dim1
+import com.adevinta.spark.core.tokens.disabled
+import com.adevinta.spark.core.tokens.highlight
+import com.adevinta.spark.core.tokens.transparent
 import com.adevinta.spark.tools.modifiers.sparkUsageOverlay
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf

@@ -66,10 +66,10 @@ import com.adevinta.spark.components.text.Text
 import com.adevinta.spark.components.textfields.FormFieldStatus
 import com.adevinta.spark.components.textfields.TextFieldDefault
 import com.adevinta.spark.components.textfields.sparkOutlinedTextFieldColors
-import com.adevinta.spark.tokens.EmphasizeDim3
-import com.adevinta.spark.tokens.dim1
-import com.adevinta.spark.tokens.dim5
-import com.adevinta.spark.tokens.transparent
+import com.adevinta.spark.core.tokens.EmphasizeDim3
+import com.adevinta.spark.core.tokens.dim1
+import com.adevinta.spark.core.tokens.dim5
+import com.adevinta.spark.core.tokens.transparent
 import com.adevinta.spark.tools.modifiers.invisibleSemantic
 import com.adevinta.spark.tools.modifiers.sparkUsageOverlay
 import kotlin.math.roundToInt

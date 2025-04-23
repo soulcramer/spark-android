@@ -65,7 +65,7 @@ import com.adevinta.spark.components.toggles.SwitchLabelled
 import com.adevinta.spark.icons.LikeFill
 import com.adevinta.spark.icons.SparkIcons
 import com.adevinta.spark.icons.Store
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.highlight
 import kotlinx.coroutines.launch
 
 public val BottomSheetConfigurator: Configurator = Configurator(

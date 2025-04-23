@@ -36,9 +36,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
 import com.adevinta.spark.SparkTheme
-import com.adevinta.spark.tokens.dim1
-import com.adevinta.spark.tokens.dim2
-import com.adevinta.spark.tokens.dim3
+import com.adevinta.spark.core.tokens.dim1
+import com.adevinta.spark.core.tokens.dim2
+import com.adevinta.spark.core.tokens.dim3
 
 @Composable
 internal fun sparkOutlinedTextFieldColors(

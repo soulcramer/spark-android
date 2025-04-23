@@ -42,8 +42,8 @@ import com.adevinta.spark.components.rating.RatingStarState.Half
 import com.adevinta.spark.icons.SparkIcons
 import com.adevinta.spark.icons.StarFill
 import com.adevinta.spark.icons.StarOutline
-import com.adevinta.spark.tokens.dim3
-import com.adevinta.spark.tokens.dim5
+import com.adevinta.spark.core.tokens.dim3
+import com.adevinta.spark.core.tokens.dim5
 
 /**
  * RatingStar is the atomic element of rating components

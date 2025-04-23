@@ -57,8 +57,8 @@ import com.adevinta.spark.icons.MessageOutline
 import com.adevinta.spark.icons.Minus
 import com.adevinta.spark.icons.Plus
 import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tokens.bodyWidth
-import com.adevinta.spark.tokens.highlight
+import com.adevinta.spark.core.tokens.bodyWidth
+import com.adevinta.spark.core.tokens.highlight
 import kotlin.random.Random
 
 public val TabsConfigurator: Configurator = Configurator(

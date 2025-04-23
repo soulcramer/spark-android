@@ -58,7 +58,7 @@ import com.adevinta.spark.components.menu.DropdownMenu
 import com.adevinta.spark.components.menu.DropdownMenuItem
 import com.adevinta.spark.icons.SparkIcons
 import com.adevinta.spark.icons.WheelOutline
-import com.adevinta.spark.tokens.applyTonalElevation
+import com.adevinta.spark.core.tokens.applyTonalElevation
 import com.adevinta.spark.tools.modifiers.invisibleSemantic
 
 @Composable

@@ -70,7 +70,7 @@ import com.adevinta.spark.icons.NoPhoto
 import com.adevinta.spark.icons.SparkIcon
 import com.adevinta.spark.icons.SparkIcons
 import com.adevinta.spark.icons.Tattoo
-import com.adevinta.spark.tokens.EmphasizeDim2
+import com.adevinta.spark.core.tokens.EmphasizeDim2
 import com.adevinta.spark.tools.modifiers.ifNotNull
 import com.adevinta.spark.tools.modifiers.sparkUsageOverlay
 

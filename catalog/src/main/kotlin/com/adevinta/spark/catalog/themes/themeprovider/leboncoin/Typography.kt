@@ -21,7 +21,7 @@
  */
 package com.adevinta.spark.catalog.themes.themeprovider.leboncoin
 
-import com.adevinta.spark.tokens.SparkTypography
-import com.adevinta.spark.tokens.sparkTypography
+import com.adevinta.spark.core.tokens.SparkTypography
+import com.adevinta.spark.core.tokens.sparkTypography
 
 internal val LeboncoinTypo: SparkTypography = sparkTypography()

@@ -39,7 +39,7 @@ import com.adevinta.spark.catalog.R
 import com.adevinta.spark.catalog.examples.example.ExampleItem
 import com.adevinta.spark.catalog.model.Component
 import com.adevinta.spark.components.text.Text
-import com.adevinta.spark.tokens.Layout
+import com.adevinta.spark.core.tokens.Layout
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
