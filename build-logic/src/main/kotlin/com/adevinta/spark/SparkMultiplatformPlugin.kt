@@ -43,22 +43,30 @@ public class SparkMultiplatformPlugin : Plugin<Project> {
             applyDefaultHierarchyTemplate()
 
             jvm()
-            if (pluginManager.hasPlugin("com.android.library")) {
+            if (isAndroid) {
                 androidTarget()
+                if (isAndroidLibrary) {
+                    androidLibrary {
+                        experimentalProperties["android.experimental.kmp.enableAndroidResources"] = true
+                    }
+                }
             }
 
             // We don't need to build an iOS x64 framework
             // iosX64()
-//            iosArm64()
-//            iosSimulatorArm64()
+            // iosArm64()
+            // iosSimulatorArm64()
 
-            targets.configureEach {
-                compilations.configureEach {
-                    compileTaskProvider.configure {
-                        compilerOptions {
-                            freeCompilerArgs.add("-Xexpect-actual-classes")
-                        }
-                    }
+            compilerOptions {
+                // Only add opt-in flags for modules that actually have these annotations
+                if (project.name != "spark-icons") {
+                    freeCompilerArgs.addAll(
+                        listOf(
+                            "-Xexpect-actual-classes",
+                            "-opt-in=com.adevinta.spark.InternalSparkApi",
+                            "-opt-in=com.adevinta.spark.ExperimentalSparkApi",
+                        ),
+                    )
                 }
             }
 

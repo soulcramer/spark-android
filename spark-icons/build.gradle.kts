@@ -58,5 +58,5 @@ kotlin {
 compose.resources {
     publicResClass = true
     packageOfResClass = "com.adevinta.spark.icons"
-    generateResClass = auto
+    generateResClass = always
 }

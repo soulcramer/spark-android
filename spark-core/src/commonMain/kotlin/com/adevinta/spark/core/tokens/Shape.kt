@@ -21,6 +21,7 @@
  */
 package com.adevinta.spark.core.tokens
 
+// import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,7 +36,6 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.adevinta.spark.PreviewTheme
 import com.adevinta.spark.SparkTheme
@@ -112,10 +112,7 @@ public fun SparkShapes.asMaterial3Shapes(): Material3Shapes = Material3Shapes(
  */
 internal val LocalSparkShapes = staticCompositionLocalOf { SparkShapes() }
 
-@Preview(
-    group = "Tokens",
-    name = "Shapes",
-)
+//@Preview
 @Composable
 internal fun ShapePreview() {
     PreviewTheme {

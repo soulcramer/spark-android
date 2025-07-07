@@ -25,11 +25,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.platform.LocalInspectionMode
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import com.adevinta.spark.R
+import com.adevinta.spark.core.Res
+import com.adevinta.spark.core.nunito_sans_bold
+import com.adevinta.spark.core.nunito_sans_bold_italic
+import com.adevinta.spark.core.nunito_sans_italic
+import com.adevinta.spark.core.nunito_sans_regular
+import com.adevinta.spark.core.nunito_sans_semi_bold
+import com.adevinta.spark.core.nunito_sans_semi_bold_italic
+import org.jetbrains.compose.resources.Font
 
 /**
  * Creates a [SparkFontFamily] with the given [fontFamily] and [useSparkTokensHighlighter].
@@ -37,8 +43,9 @@ import com.adevinta.spark.R
  * @param useSparkTokensHighlighter If true, the [FontFamily] will be replaced by [FontFamily.Companion.Cursive] when the
  * token highlighting is enabled in the SparkTheme.
  */
+@Composable
 public fun sparkFontFamily(
-    fontFamily: FontFamily = nunitoFontFamily,
+    fontFamily: FontFamily = nunitoFontFamily(),
     useSparkTokensHighlighter: Boolean = false,
 ): SparkFontFamily = SparkFontFamily(
     useSparkTokensHighlighter = useSparkTokensHighlighter,
@@ -62,13 +69,14 @@ public class SparkFontFamily(private val useSparkTokensHighlighter: Boolean, pri
         }
 }
 
-internal val nunitoFontFamily = FontFamily(
+@Composable
+internal fun nunitoFontFamily() = FontFamily(
     fonts = listOf(
-        Font(resId = R.font.nunito_sans_regular, weight = FontWeight.Normal),
-        Font(resId = R.font.nunito_sans_italic, weight = FontWeight.Normal, style = FontStyle.Italic),
-        Font(resId = R.font.nunito_sans_semi_bold, weight = FontWeight.SemiBold),
-        Font(resId = R.font.nunito_sans_semi_bold_italic, weight = FontWeight.SemiBold, style = FontStyle.Italic),
-        Font(resId = R.font.nunito_sans_bold, weight = FontWeight.Bold),
-        Font(resId = R.font.nunito_sans_bold_italic, weight = FontWeight.Bold, style = FontStyle.Italic),
+        Font(Res.font.nunito_sans_regular, weight = FontWeight.Normal),
+        Font(Res.font.nunito_sans_italic, weight = FontWeight.Normal, style = FontStyle.Italic),
+        Font(Res.font.nunito_sans_semi_bold, weight = FontWeight.SemiBold),
+        Font(Res.font.nunito_sans_semi_bold_italic, weight = FontWeight.SemiBold, style = FontStyle.Italic),
+        Font(Res.font.nunito_sans_bold, weight = FontWeight.Bold),
+        Font(Res.font.nunito_sans_bold_italic, weight = FontWeight.Bold, style = FontStyle.Italic),
     ),
 )

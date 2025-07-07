@@ -1,0 +1,433 @@
+/*
+ * Copyright (c) 2023 Adevinta
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+package com.adevinta.spark.components.progress.tracker
+
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.LocalIndication
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.ProvideTextStyle
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.MultiContentMeasurePolicy
+import androidx.compose.ui.layout.layoutId
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.util.fastForEachIndexed
+import com.adevinta.spark.ExperimentalSparkApi
+import com.adevinta.spark.SparkTheme
+import com.adevinta.spark.components.IntentColor
+import com.adevinta.spark.components.icons.Icon
+import com.adevinta.spark.components.progress.tracker.LayoutOrientation.Horizontal
+import com.adevinta.spark.components.progress.tracker.LayoutOrientation.Vertical
+import com.adevinta.spark.components.surface.Surface
+import com.adevinta.spark.components.text.Text
+import com.adevinta.spark.components.textfields.LabelId
+import com.adevinta.spark.core.tokens.dim1
+import com.adevinta.spark.core.tokens.disabled
+import com.adevinta.spark.core.tokens.highlight
+import com.adevinta.spark.core.tokens.transparent
+import com.adevinta.spark.icons.Check
+import com.adevinta.spark.icons.SparkIcons
+import com.adevinta.spark.tools.modifiers.sparkUsageOverlay
+import kotlinx.collections.immutable.ImmutableList
+import androidx.compose.material3.HorizontalDivider as MaterialHorizontalDivider
+import androidx.compose.material3.VerticalDivider as MaterialVerticalDivider
+
+/**
+ * [ProgressTrackerRow] is a visual navigation element typically used to display progress or guide user through a multi-step process.
+ * It displays a linear progress as steps, accepts between 2 and 6 steps maximum.
+ *
+ * For the vertical use [ProgressTrackerColumn] instead.
+ *
+ * Each step displays its label via stepLabel. Selection and click are handled.
+ * A step indicator is displayed via StepIndicator for each step. Its state is updated according to selection.
+ *
+ * @property items The list of steps to be displayed in the progress tracker.
+ * @property modifier The modifier to be applied to the progress tracker.
+ * @property intent The intent of the progress tracker, which determines its color scheme. Basic being the default.
+ * @property style The style of the progress tracker, either outlined (default) or tinted.
+ * @property size The size of the progress tracker, either large (default), medium, or small.
+ * @property hasIndicatorContent A boolean value indicating whether the step indicator should show the step index.
+ * @property onStepClick Callback with the step index selected.
+ * @property selectedStep The index of the currently selected step. All steps before this index will be marked as done.
+ *
+ * @see [ProgressTrackerColumn]
+ */
+@Composable
+@ExperimentalSparkApi
+public fun ProgressTrackerRow(
+    items: ImmutableList<ProgressStep>,
+    modifier: Modifier = Modifier,
+    intent: ProgressTrackerIntent = ProgressTrackerIntent.Basic,
+    style: ProgressStyles = ProgressStyles.Outlined,
+    size: ProgressSizes = ProgressSizes.Large,
+    hasIndicatorContent: Boolean = true,
+    onStepClick: ((index: Int) -> Unit)? = null,
+    selectedStep: Int = 0,
+) {
+    ProgressTracker(
+        items = items,
+        orientation = Horizontal,
+        modifier = modifier,
+        intent = intent,
+        style = style,
+        size = size,
+        hasIndicatorContent = hasIndicatorContent,
+        onStepClick = onStepClick,
+        selectedStep = selectedStep,
+    )
+}
+
+/**
+ * [ProgressTrackerColumn] is a visual navigation element typically used to display progress or guide user through a multi-step process.
+ * It displays a linear progress as steps, accepts between 2 and 6 steps maximum.
+ *
+ * For the horizontal use [ProgressTrackerColumn] instead.
+ *
+ * Each step displays its label via stepLabel. Selection and click are handled.
+ * A step indicator is displayed via StepIndicator for each step. Its state is updated according to selection.
+ *
+ * @property items The list of steps to be displayed in the progress tracker.
+ * @property modifier The modifier to be applied to the progress tracker.
+ * @property intent The intent of the progress tracker, which determines its color scheme. Basic being the default.
+ * @property style The style of the progress tracker, either outlined (default) or tinted.
+ * @property size The size of the progress tracker, either large (default), medium, or small.
+ * @property hasIndicatorContent A boolean value indicating whether the step indicator should show the step index.
+ * @property onStepClick Callback with the step index selected.
+ * @property selectedStep The index of the currently selected step. All steps before this index will be marked as done.
+ *
+ * @see [ProgressTrackerRow]
+ */
+@Composable
+@ExperimentalSparkApi
+public fun ProgressTrackerColumn(
+    items: ImmutableList<ProgressStep>,
+    modifier: Modifier = Modifier,
+    intent: ProgressTrackerIntent = ProgressTrackerIntent.Basic,
+    style: ProgressStyles = ProgressStyles.Outlined,
+    size: ProgressSizes = ProgressSizes.Large,
+    hasIndicatorContent: Boolean = true,
+    onStepClick: ((index: Int) -> Unit)? = null,
+    selectedStep: Int = 0,
+) {
+    require(items.all { it.label.isNotBlank() }) {
+        "All steps in the vertical layout should have a label otherwise it'll have render issues." +
+            "This is a known bug, if you need to make this layout please report it there" +
+            " https://github.com/leboncoin/spark-android/issues/1080"
+    }
+    ProgressTracker(
+        items = items,
+        orientation = Vertical,
+        modifier = modifier,
+        intent = intent,
+        style = style,
+        size = size,
+        hasIndicatorContent = hasIndicatorContent,
+        onStepClick = onStepClick,
+        selectedStep = selectedStep,
+    )
+}
+
+@Composable
+private fun ProgressTracker(
+    items: ImmutableList<ProgressStep>,
+    orientation: LayoutOrientation,
+    modifier: Modifier = Modifier,
+    intent: ProgressTrackerIntent = ProgressTrackerIntent.Basic,
+    style: ProgressStyles = ProgressStyles.Outlined,
+    size: ProgressSizes = ProgressSizes.Large,
+    hasIndicatorContent: Boolean = true,
+    onStepClick: ((index: Int) -> Unit)? = null,
+    selectedStep: Int = 0,
+) {
+    require(items.size in 2..6) {
+        val baseMessage = if (items.size < 2) {
+            "At least two progress indicators should be displayed"
+        } else {
+            "If a process needs more than six steps, consider simplifying the process or breaking it up " +
+                "into multiple tasks"
+        }
+        baseMessage + " Found ${items.size} steps."
+    }
+    val colors = intent.colors()
+
+    val progressTracks = @Composable {
+        items.fastForEachIndexed { index, progressStep ->
+            // Since the track is layouted after the step, we need to check the next step to know if the track
+            // should be enabled
+            val nextIndex = (index + 1).coerceAtMost(items.size - 1)
+            val nextStep = items[nextIndex]
+            ProgressTrack(
+                enabled = progressStep.enabled && nextStep.enabled,
+                color = colors.color,
+                orientation = orientation,
+            )
+        }
+    }
+
+    val interactionSources = remember(items.size) { items.map { MutableInteractionSource() } }
+
+    val stepLabels = @Composable {
+        items.fastForEachIndexed { index, progressStep ->
+            StepLabel(
+                label = progressStep.label,
+                enabled = progressStep.enabled,
+                orientation = orientation,
+                selected = index == selectedStep,
+                interactionSource = interactionSources[index],
+                onClick = { onStepClick?.invoke(index) },
+            )
+        }
+    }
+    val stepIndicators = @Composable {
+        items.forEachIndexed { index, progressStep ->
+            val isDone = index < selectedStep
+            StepIndicator(
+                colors = colors,
+                size = size,
+                style = style,
+                index = index,
+                enabled = progressStep.enabled,
+                selected = index == selectedStep,
+                done = isDone,
+                hasIndicatorContent = hasIndicatorContent,
+                onClick = onStepClick?.let {
+                    { onStepClick(index) }
+                },
+                interactionSource = interactionSources[index],
+            )
+        }
+    }
+    val measurePolicy = progressTrackerMeasurePolicy(orientation, size.size)
+    ProvideTextStyle(value = SparkTheme.typography.body2.highlight) {
+        Layout(
+            modifier = modifier
+                .selectableGroup()
+                .sparkUsageOverlay(),
+            measurePolicy = measurePolicy,
+            contents = listOf(progressTracks, stepLabels, stepIndicators),
+        )
+    }
+}
+
+/**
+ * [Row] will be [Horizontal], [Column] is [Vertical].
+ */
+internal enum class LayoutOrientation {
+    Horizontal,
+    Vertical,
+}
+
+@Composable
+internal fun progressTrackerMeasurePolicy(
+    orientation: LayoutOrientation,
+    indicatorSize: TextUnit,
+): MultiContentMeasurePolicy {
+    val size = with(LocalDensity.current) {
+        indicatorSize.toDp()
+    }
+    return ProgressTrackerMeasurePolicy(
+        orientation = orientation,
+        arrangementSpacing = 8.dp,
+        indicatorSize = size,
+    )
+}
+
+@Composable
+private fun StepLabel(
+    onClick: () -> Unit,
+    orientation: LayoutOrientation,
+    modifier: Modifier = Modifier,
+    label: CharSequence = "",
+    selected: Boolean = false,
+    enabled: Boolean = true,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+) {
+    if (label.isBlank()) return Spacer(modifier = Modifier.size(0.dp))
+    val labelColor by animateColorAsState(
+        targetValue = if (enabled) SparkTheme.colors.onSurface else SparkTheme.colors.onSurface.dim1,
+        label = "Label color",
+    )
+    CompositionLocalProvider(LocalContentColor provides labelColor) {
+        val labelModifier = modifier
+            .layoutId(LabelId)
+            .paddingFromBaseline(top = 16.dp)
+            .selectable(
+                selected = selected,
+                interactionSource = interactionSource,
+                indication = LocalIndication.current,
+                enabled = enabled,
+            ) {
+                onClick()
+            }
+        val textAlign = if (orientation == Horizontal) TextAlign.Center else TextAlign.Start
+        when (label) {
+            is AnnotatedString -> Text(
+                text = label,
+                textAlign = textAlign,
+                modifier = labelModifier,
+            )
+
+            else -> Text(
+                text = label.toString(),
+                textAlign = textAlign,
+                modifier = labelModifier,
+            )
+        }
+    }
+}
+
+@Composable
+private fun ProgressTrack(
+    color: Color,
+    orientation: LayoutOrientation,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+) {
+    val trackColor by animateColorAsState(
+        targetValue = if (enabled) color else color.disabled,
+        label = "Track color",
+    )
+    if (orientation == Horizontal) {
+        MaterialHorizontalDivider(modifier = modifier, color = trackColor)
+    } else {
+        MaterialVerticalDivider(modifier = modifier, color = trackColor)
+    }
+}
+
+@Composable
+internal fun StepIndicator(
+    colors: IntentColor,
+    size: ProgressSizes,
+    style: ProgressStyles,
+    index: Int,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    selected: Boolean = true,
+    done: Boolean = false,
+    hasIndicatorContent: Boolean = true,
+    onClick: (() -> Unit)? = null,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+) {
+    val elevation = animateStepElevation(enabled, style, interactionSource).value
+    val isOutlined = style == ProgressStyles.Outlined
+    val indicatorColor by animateColorAsState(
+        targetValue = if (selected) {
+            if (isOutlined) colors.containerColor else colors.color
+        } else {
+            if (isOutlined) colors.containerColor.transparent else colors.containerColor
+        },
+        label = "Indicator color",
+    )
+
+    val indicatorContentColor by animateColorAsState(
+        targetValue = if (selected) {
+            if (isOutlined) colors.onContainerColor else colors.onColor
+        } else {
+            if (isOutlined) SparkTheme.colors.onSurface else colors.onContainerColor
+        },
+        label = "Indicator color",
+    )
+    val indicatorAlpha by animateFloatAsState(
+        targetValue = if (enabled) 1f else SparkTheme.colors.dim3,
+        label = "Indicator color",
+    )
+    val borderSize by animateDpAsState(
+        targetValue = if (isOutlined) 1.dp else 0.dp,
+        label = "Border size",
+    )
+    val indicatorSize = with(LocalDensity.current) {
+        size.size.toDp()
+    }
+
+    Surface(
+        shape = SparkTheme.shapes.full,
+        modifier = modifier
+            .size(indicatorSize)
+            .aspectRatio(1f)
+            .graphicsLayer {
+                alpha = indicatorAlpha
+            },
+        color = indicatorColor,
+        contentColor = indicatorContentColor,
+        border = if (isOutlined) {
+            BorderStroke(borderSize, colors.color)
+        } else {
+            null
+        },
+        elevation = elevation,
+        enabled = enabled,
+        onClick = { onClick?.invoke() },
+        interactionSource = interactionSource,
+    ) {
+        AnimatedVisibility(visible = size != ProgressSizes.Small && hasIndicatorContent) {
+            AnimatedContent(
+                targetState = done,
+                contentAlignment = Alignment.Center,
+                label = "Step status indicator",
+            ) { isStepDone ->
+                if (isStepDone) {
+                    Icon(
+                        sparkIcon = SparkIcons.Check,
+                        modifier = Modifier
+                            .size(indicatorSize)
+                            .wrapContentSize(Alignment.Center),
+                        contentDescription = null, // content description is handle on the Layout
+                    )
+                } else {
+                    val stepPosition = index + 1
+                    Text(
+                        modifier = Modifier.wrapContentSize(Alignment.Center),
+                        text = "$stepPosition",
+                        style = SparkTheme.typography.body2.highlight.copy(lineHeight = 16.sp),
+                    )
+                }
+            }
+        }
+    }
+}

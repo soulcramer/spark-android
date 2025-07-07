@@ -21,7 +21,6 @@
  */
 package com.adevinta.spark.core.tokens
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -45,14 +44,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.takeOrElse
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.core.graphics.ColorUtils
 import com.adevinta.spark.InternalSparkApi
-import com.adevinta.spark.PreviewTheme
 import com.adevinta.spark.SparkTheme
 import com.adevinta.spark.components.surface.Surface
 import com.adevinta.spark.components.text.Text
@@ -105,7 +100,7 @@ import com.adevinta.spark.core.tokens.PaletteTokens.Plum700
 import com.adevinta.spark.core.tokens.PaletteTokens.Plum800
 import com.adevinta.spark.core.tokens.PaletteTokens.Plum900
 import kotlin.math.ln
-import kotlin.reflect.KProperty0
+import kotlin.reflect.KProperty1
 
 public fun lightSparkColors(
     accent: Color = Plum500,
@@ -872,6 +867,18 @@ public fun SparkColors.asMaterial3Colors(): ColorScheme = ColorScheme(
     surfaceContainerHighest = surface,
     surfaceContainerLow = surface,
     surfaceContainerLowest = surface,
+    primaryFixed = main,
+    primaryFixedDim = mainContainer,
+    onPrimaryFixed = onMain,
+    onPrimaryFixedVariant = onMainContainer,
+    secondaryFixed = support,
+    secondaryFixedDim = supportContainer,
+    onSecondaryFixed = onSupport,
+    onSecondaryFixedVariant = onSupportContainer,
+    tertiaryFixed = support,
+    tertiaryFixedDim = supportContainer,
+    onTertiaryFixed = onSupport,
+    onTertiaryFixedVariant = onSupportContainer,
 )
 
 /**
@@ -974,9 +981,9 @@ public fun ColorScheme.asSparkColors(useDark: Boolean): SparkColors = if (useDar
 }
 
 private fun Color.adjustColorToMaterialTone(tone: Float): Color {
-    val m3HCT = FloatArray(3)
-    ColorUtils.colorToM3HCT(this.toArgb(), m3HCT)
-    return Color(ColorUtils.M3HCTToColor(m3HCT[0], m3HCT[1], tone))
+//    val m3HCT = FloatArray(3)
+//    ColorUtils.colorToM3HCT(this.toArgb(), m3HCT)
+    return this //Color(ColorUtils.M3HCTToColor(m3HCT[0], m3HCT[1], tone))
 }
 
 /**
@@ -1289,17 +1296,17 @@ public fun debugColors(
     dimContent5 = .08f,
 )
 
-@Preview(
-    group = "Tokens",
-    name = "Colors",
-    device = "spec:width=1280dp,height=800dp,dpi=240",
-)
-@Composable
-private fun ColorPreview() {
-    PreviewTheme {
-        Colors()
-    }
-}
+//@Preview(
+//    group = "Tokens",
+//    name = "Colors",
+//    device = "spec:width=1280dp,height=800dp,dpi=240",
+//)
+//@Composable
+//private fun ColorPreview() {
+//    PreviewTheme {
+//        Colors()
+//    }
+//}
 
 @Composable
 private fun Colors() {
@@ -1319,12 +1326,12 @@ private fun Colors() {
 }
 
 @Composable
-private fun ColorItem(color: KProperty0<Color>) {
+private fun ColorItem(color: KProperty1<SparkColors, Color>) {
     Surface(
         modifier = Modifier
             .padding(8.dp)
             .size(104.dp),
-        color = color.get(),
+        color = color.get(SparkTheme.colors),
         shape = SparkTheme.shapes.extraLarge,
         border = BorderStroke(2.dp, SparkTheme.colors.onBackground),
     ) {
@@ -1349,12 +1356,12 @@ private val previewColors
                 listOf(
                     SparkColors::support,
                     SparkColors::supportContainer,
-                    SparkColors::supportVariant
+                    SparkColors::supportVariant,
                 ),
                 listOf(
                     SparkColors::accent,
                     SparkColors::accentContainer,
-                    SparkColors::accentVariant
+                    SparkColors::accentVariant,
                 ),
                 listOf(SparkColors::basic, SparkColors::basicContainer),
             ),

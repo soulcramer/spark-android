@@ -24,6 +24,7 @@ package com.adevinta.spark
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
+import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.get
 
 internal class SparkAndroidApplicationPlugin : Plugin<Project> {
@@ -36,6 +37,10 @@ internal class SparkAndroidApplicationPlugin : Plugin<Project> {
                 defaultConfig {
                     targetSdk = spark().versions.targetSdk.toString().toInt()
                 }
+                compileOptions {
+                    // https://developer.android.com/studio/write/java8-support
+                    isCoreLibraryDesugaringEnabled = true
+                }
                 buildTypes {
                     release {
                         isMinifyEnabled = true
@@ -43,6 +48,10 @@ internal class SparkAndroidApplicationPlugin : Plugin<Project> {
                         signingConfig = signingConfigs["debug"]
                         proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
                     }
+                }
+                dependencies {
+                    // https://developer.android.com/studio/write/java8-support
+                    add("coreLibraryDesugaring",(spark().libraries.desugarJdkLibs))
                 }
             }
         }

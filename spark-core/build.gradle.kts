@@ -17,12 +17,18 @@ kotlin {
         commonMain.dependencies {
             api(projects.sparkIcons)
             api(compose.ui)
+            api(compose.uiUtil)
             api(compose.runtime)
             api(compose.foundation)
             api(compose.material3)
-            api(libs.androidx.compose.material3.windowSizeClass)
             api(compose.components.resources)
-            implementation(compose.preview)
+//            api(compose.material3AdaptiveNavigationSuite) {
+//                exclude(group = "org.jetbrains.androidx.window")
+//            }
+            api("org.jetbrains.compose.material3.adaptive:adaptive:1.2.0-alpha02") {
+                exclude(group = "org.jetbrains.androidx.window")
+            }
+            api(libs.androidx.window.core)
         }
         androidMain.dependencies {
             implementation(compose.components.uiToolingPreview)
@@ -32,23 +38,16 @@ kotlin {
 
             implementation(libs.androidx.appCompat.resources)
             api(compose.animationGraphics)
-
         }
         jvmMain.dependencies {
-
         }
     }
-    compilerOptions {
-        freeCompilerArgs.addAll(
-            listOf(
-                "-opt-in=com.adevinta.spark.InternalSparkApi",
-                "-opt-in=com.adevinta.spark.ExperimentalSparkApi",
-            ),
-        )
-    }
-//    androidLibrary {
-//        experimentalProperties["android.experimental.kmp.enableAndroidResources"] = true
-//    }
+}
+
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "com.adevinta.spark.core"
+    generateResClass = auto
 }
 
 //compose.resources {

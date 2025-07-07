@@ -28,6 +28,10 @@ pluginManagement {
     }
 }
 
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.10.0"
+}
+
 dependencyResolutionManagement {
     repositoriesMode = RepositoriesMode.FAIL_ON_PROJECT_REPOS
     repositories {
@@ -48,5 +52,4 @@ include(":spark-icons")
 include(":spark-lint")
 include(":spark-screenshot-testing")
 include(":catalog")
-include(":desktop-catalog")
 include(":spark-core")

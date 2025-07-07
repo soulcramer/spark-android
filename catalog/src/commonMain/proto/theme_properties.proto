@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package com.adevinta.spark.catalog.datastore.theme;
+
+option java_package = "com.adevinta.spark.catalog.datastore.theme";
+option java_multiple_files = true;
+
+message ThemeProperties {
+  float font_scale = 1;
+  UserMode user_mode = 2;
+  ThemeMode theme_mode = 3;
+  ColorMode color_mode = 4;
+  BrandMode brand_mode = 5;
+  FontScaleMode font_scale_mode = 6;
+  ColorBlindNessType color_blind_ness_type = 7;
+  float color_blind_ness_severity = 8;
+  NavigationMode navigation_mode = 9;
+  TextDirection text_direction = 10;
+  bool highlight_spark_components = 11;
+  bool highlight_spark_tokens = 12;
+}
+
+enum UserMode {
+  USER_MODE_PART = 0;
+  USER_MODE_PRO = 1;
+}
+
+enum ThemeMode {
+  THEME_MODE_SYSTEM = 0;
+  THEME_MODE_LIGHT = 1;
+  THEME_MODE_DARK = 2;
+}
+
+enum ColorMode {
+  COLOR_MODE_BASELINE = 0;
+  COLOR_MODE_BRAND = 1;
+  COLOR_MODE_DYNAMIC = 2;
+}
+
+enum BrandMode {
+  BRAND_MODE_LEBONCOIN = 0;
+  BRAND_MODE_KLEINANZEIGEN = 1;
+  BRAND_MODE_MILANUNCIOS = 2;
+  BRAND_MODE_SUBITO = 3;
+}
+
+enum FontScaleMode {
+  FONT_SCALE_MODE_SYSTEM = 0;
+  FONT_SCALE_MODE_CUSTOM = 1;
+}
+
+enum ColorBlindNessType {
+  COLOR_BLINDNESS_TYPE_NONE = 0;
+  COLOR_BLINDNESS_TYPE_DEUTERANOMALY = 1;
+  COLOR_BLINDNESS_TYPE_PROTANOMALY = 2;
+  COLOR_BLINDNESS_TYPE_TRITANOMALY = 3;
+}
+
+enum NavigationMode {
+  NAVIGATION_MODE_DEFAULT = 0;
+  NAVIGATION_MODE_SHARED_AXIS_X = 1;
+  NAVIGATION_MODE_SHARED_AXIS_Y = 2;
+  NAVIGATION_MODE_SHARED_AXIS_Z = 3;
+  NAVIGATION_MODE_FADE_THROUGH = 4;
+}
+
+enum TextDirection {
+  TEXT_DIRECTION_SYSTEM = 0;
+  TEXT_DIRECTION_LTR = 1;
+  TEXT_DIRECTION_RTL = 2;
+}

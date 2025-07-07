@@ -19,16 +19,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-@file:OptIn(ExperimentalComposeLibrary::class)
+@file:OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
 
-import org.jetbrains.compose.ExperimentalComposeLibrary
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import java.util.Properties
 
 plugins {
-    alias(libs.plugins.spark.application)
     alias(libs.plugins.spark.compose)
+    alias(libs.plugins.spark.application)
+    alias(libs.plugins.spark.kotlinMultiplatform)
     id("kotlin-parcelize")
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.protobuf)
+    id("org.jetbrains.compose.hot-reload") version "1.0.0-alpha11"
+    id("com.squareup.wire") version "5.3.3"
 }
 
 android {
@@ -71,32 +75,91 @@ android {
     }
 }
 
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.sparkIcons)
+            implementation(projects.sparkCore)
+            implementation(projects.spark)
+
+            implementation(kotlin("reflect"))
+            implementation(libs.kotlinx.collections.immutable)
+
+            implementation(compose.foundation)
+            implementation(compose.runtime)
+            implementation(compose.ui)
+            implementation(compose.uiUtil)
+            implementation(compose.animation)
+            implementation(compose.animationGraphics)
+            implementation(compose.materialIconsExtended)
+            implementation(compose.material3)
+            implementation(compose.uiTest)
+
+            api(compose.material3AdaptiveNavigationSuite) {
+                exclude(group = "org.jetbrains.androidx.window")
+            }
+            api("org.jetbrains.compose.material3.adaptive:adaptive:1.2.0-alpha02") {
+                exclude(group = "org.jetbrains.androidx.window")
+            }
+            api(libs.androidx.window.core)
+            implementation(libs.androidx.navigation.compose)
+            implementation(compose.components.resources)
+            implementation(libs.androidx.graphics.shapes)
+            implementation(libs.androidx.datastore.core)
+            implementation(libs.protobuf.kotlin.lite)
+            implementation(libs.material.motion)
+
+        }
+
+        jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
+            implementation(libs.kotlin.coroutines.swing)
+        }
+
+        androidMain.dependencies {
+            implementation(libs.accompanist.drawablepainter)
+            implementation(compose.preview)
+
+            implementation(libs.androidx.activity)
+            implementation(libs.androidx.activity.compose)
+            implementation(libs.androidx.appCompat)
+            implementation(libs.androidx.datastore)
+        }
+    }
+}
+
+compose {
+    resources {
+        publicResClass = false
+        packageOfResClass = "com.adevinta.spark.catalog"
+        generateResClass = auto
+    }
+
+    desktop {
+        application {
+            mainClass = "com.adevinta.spark.catalog.MainKt"
+
+            nativeDistributions {
+                modules("java.sql")
+                targetFormats(
+                    TargetFormat.Dmg,
+                    TargetFormat.Msi,
+                    TargetFormat.Deb,
+                )
+                packageName = "com.adevinta.spark.catalog"
+                packageVersion = "1.0.0"
+            }
+        }
+    }
+}
+
 dependencies {
-    implementation(projects.spark)
-
-    implementation(libs.kotlin.reflect)
-    implementation(libs.kotlinx.collections.immutable)
-
-    implementation(libs.accompanist.drawablepainter)
-
-    implementation(compose.foundation)
-    implementation(compose.ui)
-    implementation(compose.uiTest)
-    implementation(compose.preview)
-    implementation(compose.materialIconsExtended)
-    implementation(compose.material3)
-    implementation(libs.androidx.graphics.shapes)
-
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.appCompat)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.material.motion)
-
-    implementation(libs.androidx.datastore)
-    implementation(libs.kotlinx.serialization.json)
-
     coreLibraryDesugaring(libs.desugarJdkLibs)
+}
 
-    debugImplementation(libs.androidx.compose.ui.tooling)
+wire {
+    kotlin {}
+    sourcePath {
+        srcDir("src/commonMain/proto")
+    }
 }

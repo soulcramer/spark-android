@@ -22,6 +22,7 @@
 plugins {
     alias(libs.plugins.spark.library)
     alias(libs.plugins.spark.compose)
+    alias(libs.plugins.spark.kotlinMultiplatform)
     alias(libs.plugins.spark.dokka)
     alias(libs.plugins.spark.publishing)
     alias(libs.plugins.spark.dependencyGuard)
@@ -39,60 +40,55 @@ android {
         unitTests.isIncludeAndroidResources = true
         unitTests.isReturnDefaultValues = true
     }
-
-//    kotlinOptions {
-//        freeCompilerArgs += listOf(
-//            "-opt-in=com.adevinta.spark.InternalSparkApi",
-//            "-opt-in=com.adevinta.spark.ExperimentalSparkApi",
-//        )
-//    }
 }
 
-dependencies {
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.constraintlayout.compose)
-    lintPublish(projects.sparkLint)
-    lintChecks(libs.slack.lint.compose)
+compose.resources {
+    publicResClass = false
+    packageOfResClass = "com.adevinta.spark"
+    generateResClass = always
+}
 
-    api(projects.sparkIcons)
-    api(projects.sparkCore)
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            api(projects.sparkIcons)
+            api(projects.sparkCore)
+            api(compose.ui)
+            api(compose.uiUtil)
+            api(compose.runtime)
+            api(compose.foundation)
+            api(compose.material3)
+            api(compose.animationGraphics)
+            api(compose.components.resources)
+            api(compose.components.uiToolingPreview)
+            api(libs.kotlinx.collections.immutable)
+            implementation(libs.androidx.lifecycle)
+            api(libs.coil.compose)
+            implementation(libs.coil.network.ktor)
+            api(compose.material3AdaptiveNavigationSuite) {
+                exclude(group = "org.jetbrains.androidx.window")
+            }
+            api("org.jetbrains.compose.material3.adaptive:adaptive:1.2.0-alpha02") {
+                exclude(group = "org.jetbrains.androidx.window")
+            }
+            api(libs.androidx.window.core)
+            implementation("be.digitalia.compose.htmlconverter:htmlconverter:1.1.0")
+        }
 
-    implementation(libs.accompanist.drawablepainter)
+        androidMain.dependencies {
+            implementation(libs.androidx.constraintlayout)
+            implementation(libs.androidx.constraintlayout.compose)
+            implementation(libs.accompanist.drawablepainter)
+            implementation(libs.androidx.appCompat.resources)
+            implementation(libs.androidx.activity.compose)
+            implementation(libs.androidx.core)
 
-    implementation(libs.androidx.appCompat.resources)
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.core)
-    implementation(libs.androidx.lifecycle.viewmodel)
-    implementation(libs.androidx.savedstate)
-    implementation(libs.androidx.window)
+            // Removed all androidx Compose dependencies to avoid conflicts with JetBrains Compose Multiplatform
+            // Using JetBrains Compose equivalents from commonMain instead
+        }
 
-    api(libs.androidx.compose.animation.graphics)
-    api(libs.androidx.compose.foundation)
-    api(compose.material3)
-    api(libs.androidx.compose.material3.windowSizeClass)
-    api(libs.androidx.compose.ui)
-    api(libs.androidx.compose.ui.text)
-    api(libs.androidx.compose.ui.tooling.preview)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.constraintsExplorer)
-    implementation(libs.androidx.compose.ui.util)
-    api(platform(libs.coil.bom))
-    api(libs.coil.compose)
-    api(libs.kotlinx.collections.immutable)
-
-    testImplementation(libs.junit)
-    testImplementation(libs.kotlin.test)
-    testImplementation(libs.androidx.test.truth)
-    testImplementation(libs.androidx.test.runner)
-    testImplementation(libs.testParameterInjector)
-    testImplementation(libs.robolectric)
-    testImplementation(libs.androidx.compose.ui.testJUnit)
-    testImplementation(libs.androidx.compose.ui.testManifest)
-
-    androidTestImplementation(libs.junit)
-    androidTestImplementation(libs.kotlin.test)
-    androidTestImplementation(libs.androidx.test.truth)
-    androidTestImplementation(libs.androidx.test.runner)
-    androidTestImplementation(libs.androidx.compose.ui.testJUnit)
-    androidTestImplementation(libs.androidx.compose.ui.testManifest)
+        jvmMain.dependencies {
+            // JVM-specific dependencies can be added here
+        }
+    }
 }

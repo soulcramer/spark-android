@@ -26,7 +26,6 @@ import androidx.compose.ui.unit.dp
 
 public object IconDefaults {
     public val size: IconSize = IconSize.Medium
-    public val intent: IconIntent = IconIntent.Current
 }
 
 public enum class IconSize(public val size: Dp) {

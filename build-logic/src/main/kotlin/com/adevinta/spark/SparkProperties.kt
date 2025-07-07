@@ -60,6 +60,8 @@ internal class SparkLibraries(catalog: VersionCatalog) {
     val `androidx-compose-bom` by catalog
     val `dokka-android-documentation-plugin` by catalog
     val `kotlin-bom` by catalog
+
+    val desugarJdkLibs by catalog
     val `ktlint-bom` by catalog
 
     private operator fun VersionCatalog.getValue(

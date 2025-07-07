@@ -1,0 +1,281 @@
+/*
+ * Copyright (c) 2023-2025 Adevinta
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+package com.adevinta.spark.catalog.themes
+
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.add
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.adevinta.spark.SparkTheme
+import com.adevinta.spark.catalog.Res
+import com.adevinta.spark.catalog.brand
+import com.adevinta.spark.catalog.pro
+import com.adevinta.spark.catalog.scale
+import com.adevinta.spark.catalog.theme_picker_font_scale_title
+import com.adevinta.spark.catalog.theme_picker_mode_title
+import com.adevinta.spark.catalog.theme_picker_text_direction_title
+import com.adevinta.spark.catalog.theme_picker_theme_title
+import com.adevinta.spark.catalog.themepicker_navigation_label
+import com.adevinta.spark.catalog.ui.ButtonGroup
+import com.adevinta.spark.catalog.ui.DropdownEnum
+import com.adevinta.spark.catalog.util.PreviewTheme
+import com.adevinta.spark.components.slider.Slider
+import com.adevinta.spark.components.text.Text
+import com.adevinta.spark.components.toggles.SwitchLabelled
+import com.adevinta.spark.core.tokens.Layout
+import com.adevinta.spark.core.tokens.highlight
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
+
+@Composable
+public fun ThemePicker(
+    modifier: Modifier = Modifier,
+    theme: Theme,
+    onThemeChange: (theme: Theme) -> Unit,
+) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = WindowInsets.safeDrawing
+            .only(WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom)
+            .add(
+                WindowInsets(
+                    top = ThemePickerPadding,
+                    bottom = ThemePickerPadding,
+                    left = Layout.bodyMargin,
+                    right = Layout.bodyMargin,
+                ),
+            )
+            .asPaddingValues(),
+        verticalArrangement = Arrangement.spacedBy(ThemePickerPadding),
+    ) {
+        item {
+            val themeModes = ThemeMode.entries
+            val themeModesLabel = themeModes.map { it.name }
+            ButtonGroup(
+                title = stringResource(Res.string.theme_picker_mode_title),
+                selectedOption = theme.themeMode.name,
+                onOptionSelect = { onThemeChange(theme.copy(themeMode = ThemeMode.valueOf(it))) },
+                options = themeModesLabel,
+            )
+        }
+        item {
+            Column {
+                val colorModes = ColorMode.entries
+                val colorModesLabel = colorModes.map { it.name }
+                ButtonGroup(
+                    title = stringResource(Res.string.theme_picker_theme_title),
+                    selectedOption = theme.colorMode.name,
+                    onOptionSelect = { onThemeChange(theme.copy(colorMode = ColorMode.valueOf(it))) },
+                    options = colorModesLabel,
+                )
+                AnimatedVisibility(
+                    visible = theme.colorMode == ColorMode.Brand,
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .fillMaxWidth(),
+                ) {
+                    DropdownEnum(
+                        title = stringResource(Res.string.brand),
+                        selectedOption = theme.brandMode,
+                        onOptionSelect = { onThemeChange(theme.copy(brandMode = it)) },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = ThemePickerPadding),
+                    )
+                }
+                AnimatedVisibility(
+                    visible = theme.colorMode == ColorMode.Brand,
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                ) {
+                    SwitchLabelled(
+                        checked = theme.userMode == UserMode.Pro,
+                        onCheckedChange = { checked ->
+                            onThemeChange(theme.copy(userMode = if (checked) UserMode.Pro else UserMode.Part))
+                        },
+                    ) {
+                        Text(
+                            text = stringResource(Res.string.pro),
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                    }
+                }
+            }
+        }
+
+        item {
+            val textDirections = TextDirection.entries
+            val textDirectionsLabel = textDirections.map { it.name }
+            ButtonGroup(
+                title = stringResource(Res.string.theme_picker_text_direction_title),
+                selectedOption = theme.textDirection.name,
+                onOptionSelect = { onThemeChange(theme.copy(textDirection = TextDirection.valueOf(it))) },
+                options = textDirectionsLabel,
+            )
+        }
+        item {
+            Column {
+                val fontScaleModes = FontScaleMode.entries
+                val fontModesLabel = fontScaleModes.map { it.name }
+                ButtonGroup(
+                    title = stringResource(Res.string.theme_picker_font_scale_title),
+                    selectedOption = theme.fontScaleMode.name,
+                    onOptionSelect = { onThemeChange(theme.copy(fontScaleMode = FontScaleMode.valueOf(it))) },
+                    options = fontModesLabel,
+                )
+                var fontScale by remember { mutableFloatStateOf(theme.fontScale) }
+                AnimatedVisibility(
+                    visible = theme.fontScaleMode == FontScaleMode.Custom,
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                ) {
+                    FontScaleItem(
+                        modifier = Modifier.fillMaxWidth(),
+                        enabled = theme.fontScaleMode == FontScaleMode.Custom,
+                        fontScale = fontScale,
+                        onValueChange = { fontScale = it },
+                        onValueChangeFinished = { onThemeChange(theme.copy(fontScale = fontScale)) },
+                    )
+                }
+            }
+        }
+        ShaderItems(theme, onThemeChange)
+        item {
+            DropdownEnum(
+                title = stringResource(Res.string.themepicker_navigation_label),
+                selectedOption = theme.navigationMode,
+                onOptionSelect = { onThemeChange(theme.copy(navigationMode = it)) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = ThemePickerPadding),
+            )
+        }
+        ShaderItems(
+            theme = theme,
+            onThemeChange = onThemeChange,
+        )
+        item {
+            SwitchLabelled(
+                checked = theme.useLegacyTheme,
+                onCheckedChange = { checked ->
+                    onThemeChange(theme.copy(useLegacyTheme = checked))
+                },
+            ) {
+                Text(
+                    text = "Use LegacyTheme",
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        }
+        item {
+            SwitchLabelled(
+                checked = theme.highlightSparkComponents,
+                onCheckedChange = { checked ->
+                    onThemeChange(theme.copy(highlightSparkComponents = checked))
+                },
+            ) {
+                Text(
+                    text = "Highlight Spark Components",
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        }
+        item {
+            SwitchLabelled(
+                checked = theme.highlightSparkTokens,
+                onCheckedChange = { checked ->
+                    onThemeChange(theme.copy(highlightSparkTokens = checked))
+                },
+            ) {
+                Text(
+                    text = "Highlight Spark Tokens",
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun FontScaleItem(
+    modifier: Modifier = Modifier,
+    enabled: Boolean,
+    fontScale: Float,
+    fontScaleMin: Float = MinFontScale,
+    fontScaleMax: Float = MaxFontScale,
+    onValueChange: (textScale: Float) -> Unit,
+    onValueChangeFinished: () -> Unit,
+) {
+    Column(modifier = modifier) {
+        Slider(
+            enabled = enabled,
+            value = fontScale,
+            steps = 10,
+            onValueChange = onValueChange,
+            onValueChangeFinished = onValueChangeFinished,
+            valueRange = fontScaleMin..fontScaleMax,
+        )
+        Text(
+            text = stringResource(Res.string.scale, fontScale),
+            style = SparkTheme.typography.body2.highlight,
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ThemePickerPreview() {
+    PreviewTheme {
+        ThemePicker(
+            theme = Theme(),
+            onThemeChange = {},
+        )
+    }
+}
+
+private val ThemePickerPadding = 16.dp
+
+/**
+ * Platform-specific shader/colorblind settings UI.
+ *
+ * - On Android, shows ColorBlindSetting if supported.
+ * - On JVM/desktop, does nothing.
+ */
+public expect fun LazyListScope.ShaderItems(
+    theme: Theme,
+    onThemeChange: (theme: Theme) -> Unit,
+)

@@ -21,6 +21,7 @@
  */
 package com.adevinta.spark
 
+import androidx.annotation.RestrictTo
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -32,11 +33,10 @@ import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalRippleConfiguration
-import androidx.compose.material3.LocalUseFallbackRippleImplementation
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.RippleConfiguration
-import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ProvidableCompositionLocal
@@ -61,7 +61,6 @@ import com.adevinta.spark.core.tokens.SparkTypography
 import com.adevinta.spark.core.tokens.asMaterial3Colors
 import com.adevinta.spark.core.tokens.asMaterial3Shapes
 import com.adevinta.spark.core.tokens.asMaterial3Typography
-import com.adevinta.spark.core.tokens.calculateWindowSizeClass
 import com.adevinta.spark.core.tokens.darkSparkColors
 import com.adevinta.spark.core.tokens.debugColors
 import com.adevinta.spark.core.tokens.lightSparkColors
@@ -95,7 +94,7 @@ import com.adevinta.spark.core.tokens.updateFontFamily
  * @param useSparkComponentsHighlighter flag to highlight the spark components with an overlay to recognize
  * which component is from spark or not.
  */
-@OptIn(ExperimentalMaterial3WindowSizeClassApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 public fun SparkTheme(
     // We don't want to automatically support dark theme in the app but still want it in the previews
@@ -138,8 +137,7 @@ public fun SparkTheme(
         LocalSparkTypography provides typo,
         LocalSparkShapes provides internalShapes,
         LocalSparkFeatureFlag provides sparkFeatureFlag,
-        LocalWindowSizeClass provides calculateWindowSizeClass(),
-        LocalUseFallbackRippleImplementation provides false,
+        LocalWindowSizeClass provides currentWindowAdaptiveInfo().windowSizeClass,
         LocalIndication provides rippleIndication,
     ) {
         MaterialTheme(
@@ -190,8 +188,9 @@ public fun PreviewWrapper(
 }
 
 @Suppress("ComposeModifierMissing") // It's okay since it’s a base theme
+@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP_PREFIX)
 @Composable
-internal fun PreviewTheme(
+public fun PreviewTheme(
     useDarkColors: Boolean = LocalInspectionMode.current && isSystemInDarkTheme(),
     padding: PaddingValues = PaddingValues(16.dp),
     contentPadding: Dp = 16.dp,
@@ -261,7 +260,8 @@ public object SparkTheme {
         get() = LocalSparkShapes.current
 }
 
-internal val LocalSparkFeatureFlag: ProvidableCompositionLocal<SparkFeatureFlag> = staticCompositionLocalOf {
+@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP_PREFIX)
+public val LocalSparkFeatureFlag: ProvidableCompositionLocal<SparkFeatureFlag> = staticCompositionLocalOf {
     error("SparkFeatureFlag not provided")
 }
 

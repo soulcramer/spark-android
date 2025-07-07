@@ -21,6 +21,7 @@
  */
 package com.adevinta.spark.core.tokens
 
+//import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.LocalContentColor
@@ -29,13 +30,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.adevinta.spark.InternalSparkApi
 import com.adevinta.spark.PreviewTheme
 import com.adevinta.spark.SparkTheme
 import com.adevinta.spark.components.icons.Icon
-import com.adevinta.spark.components.spacer.HorizontalSpacer
 import com.adevinta.spark.icons.IdentityOutline
 import com.adevinta.spark.icons.SparkIcons
 
@@ -139,10 +138,7 @@ public fun EmphasizeDim5(content: @Composable () -> Unit) {
 }
 
 @Composable
-@Preview(
-    group = "Tokens",
-    name = "Emphasis",
-)
+//@Preview
 internal fun EmphasePreview() {
     PreviewTheme {
         Text("Uses default alpha")
@@ -160,10 +156,7 @@ internal fun EmphasePreview() {
 }
 
 @Composable
-@Preview(
-    group = "Tokens",
-    name = "Dim",
-)
+//@Preview
 internal fun DimPreview() {
     PreviewTheme {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -172,7 +165,6 @@ internal fun DimPreview() {
                 sparkIcon = SparkIcons.IdentityOutline,
                 contentDescription = "Favorite",
             )
-            HorizontalSpacer(8.dp)
             Text("This Text uses the default alpha")
         }
         EmphasizeDim1 {
@@ -182,7 +174,6 @@ internal fun DimPreview() {
                     sparkIcon = SparkIcons.IdentityOutline,
                     contentDescription = "Favorite",
                 )
-                HorizontalSpacer(8.dp)
                 Text("This Text uses the Dim 1")
             }
         }
@@ -193,7 +184,6 @@ internal fun DimPreview() {
                     sparkIcon = SparkIcons.IdentityOutline,
                     contentDescription = "Favorite",
                 )
-                HorizontalSpacer(8.dp)
                 Text("This Text uses the Dim 2")
             }
         }
@@ -204,7 +194,6 @@ internal fun DimPreview() {
                     sparkIcon = SparkIcons.IdentityOutline,
                     contentDescription = "Favorite",
                 )
-                HorizontalSpacer(8.dp)
                 Text("This Text uses the Dim 3")
             }
         }
@@ -215,7 +204,6 @@ internal fun DimPreview() {
                     sparkIcon = SparkIcons.IdentityOutline,
                     contentDescription = "Favorite",
                 )
-                HorizontalSpacer(8.dp)
                 Text("This Text uses the Dim 4")
             }
         }
@@ -226,7 +214,6 @@ internal fun DimPreview() {
                     sparkIcon = SparkIcons.IdentityOutline,
                     contentDescription = "Favorite",
                 )
-                HorizontalSpacer(8.dp)
                 Text("This Text uses the Dim 5")
             }
         }

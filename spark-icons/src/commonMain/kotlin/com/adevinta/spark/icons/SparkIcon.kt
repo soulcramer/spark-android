@@ -21,13 +21,16 @@
  */
 package com.adevinta.spark.icons
 
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import org.jetbrains.compose.resources.DrawableResource
 
 @Stable
-public sealed class SparkIcon {
-    public data class DrawableRes(val drawableId: DrawableResource) : SparkIcon()
-    public data class AnimatedDrawableRes(val drawableId: DrawableResource) : SparkIcon()
-    public data class Vector(val imageVector: ImageVector) : SparkIcon()
+public sealed interface SparkIcon {
+    public data class DrawableRes(val drawableId: DrawableResource) : SparkIcon
+    public data class AnimatedDrawableRes(val drawableId: DrawableResource) : SparkIcon
+    public data class Vector(val imageVector: ImageVector) : SparkIcon
 }
+

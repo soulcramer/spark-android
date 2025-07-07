@@ -21,6 +21,7 @@
  */
 package com.adevinta.spark.core.tokens
 
+import androidx.annotation.RestrictTo
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.CubicBezierEasing
@@ -61,7 +62,8 @@ public object ElevationTokens {
  * when this component is being pressed. `null` if this component is moving back to its default
  * state.
  */
-internal suspend fun Animatable<Dp, *>.animateElevation(
+@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP_PREFIX)
+public suspend fun Animatable<Dp, *>.animateElevation(
     target: Dp,
     from: Interaction? = null,
     to: Interaction? = null,

@@ -21,6 +21,7 @@
  */
 package com.adevinta.spark.core.tokens
 
+// import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -37,8 +38,7 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.windowsizeclass.WindowSizeClass
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,36 +46,36 @@ import androidx.compose.ui.composed
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.window.core.layout.WindowSizeClass
 import com.adevinta.spark.PreviewTheme
 import com.adevinta.spark.SparkTheme
 import com.adevinta.spark.components.surface.Surface
 import com.adevinta.spark.components.text.Text
-import com.adevinta.spark.tools.preview.DevicePreviews
 
 public object Layout {
 
     public val windowSize: WindowSizeClass
-        @Composable get() = LocalWindowSizeClass.current
+        @Composable get() = currentWindowAdaptiveInfo().windowSizeClass
 
     public val bodyMargin: Dp
-        @Composable get() = when (LocalWindowSizeClass.current.widthSizeClass) {
-            WindowWidthSizeClass.Compact -> 16.dp
-            WindowWidthSizeClass.Medium -> 32.dp
-            else -> 64.dp
+        @Composable get() = when {
+            windowSize.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_EXPANDED_LOWER_BOUND) -> 64.dp
+            windowSize.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_EXPANDED_LOWER_BOUND) -> 32.dp
+            else -> 16.dp
         }
 
     public val gutter: Dp
-        @Composable get() = when (LocalWindowSizeClass.current.widthSizeClass) {
-            WindowWidthSizeClass.Compact -> 8.dp
-            WindowWidthSizeClass.Medium -> 16.dp
-            else -> 24.dp
+        @Composable get() = when {
+            windowSize.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_EXPANDED_LOWER_BOUND) -> 24.dp
+            windowSize.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_EXPANDED_LOWER_BOUND) -> 16.dp
+            else -> 8.dp
         }
 
     public val columns: Int
-        @Composable get() = when (LocalWindowSizeClass.current.widthSizeClass) {
-            WindowWidthSizeClass.Compact -> 4
-            WindowWidthSizeClass.Medium -> 8
-            else -> 12
+        @Composable get() = when {
+            windowSize.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_EXPANDED_LOWER_BOUND) -> 12
+            windowSize.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_EXPANDED_LOWER_BOUND) -> 8
+            else -> 4
         }
 }
 
@@ -93,7 +93,7 @@ public fun Modifier.bodyWidth(): Modifier = fillMaxWidth()
     }
 
 @Composable
-@DevicePreviews
+//@Preview
 internal fun LayoutPreview() {
     PreviewTheme(
         padding = PaddingValues(0.dp),

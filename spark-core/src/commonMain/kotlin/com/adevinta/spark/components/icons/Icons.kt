@@ -21,15 +21,8 @@
  */
 package com.adevinta.spark.components.icons
 
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.compose.animation.graphics.ExperimentalAnimationGraphicsApi
-import androidx.compose.animation.graphics.res.animatedVectorResource
-import androidx.compose.animation.graphics.res.rememberAnimatedVectorPainter
-import androidx.compose.animation.graphics.vector.AnimatedImageVector
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.Composable
@@ -39,16 +32,8 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.PreviewLightDark
-import com.adevinta.spark.PreviewTheme
-import com.adevinta.spark.SparkTheme
-import com.adevinta.spark.icons.Check
 import com.adevinta.spark.icons.SparkIcon
-import com.adevinta.spark.icons.SparkIcons
-import com.adevinta.spark.tools.modifiers.ifNotNull
-import com.adevinta.spark.tools.modifiers.ifTrue
-import com.google.accompanist.drawablepainter.rememberDrawablePainter
+import org.jetbrains.compose.resources.painterResource
 import androidx.compose.material3.Icon as MaterialIcon
 
 /**
@@ -177,51 +162,10 @@ public fun Icon(
  * @param sparkIcon the icon to draw.
  * @param atEnd Whether the animated vector should be rendered at the end of all its animations.
  */
-//@OptIn(ExperimentalAnimationGraphicsApi::class)
+@OptIn(ExperimentalAnimationGraphicsApi::class)
 @Composable
 public fun rememberSparkIconPainter(sparkIcon: SparkIcon, atEnd: Boolean = false): Painter = when (sparkIcon) {
     is SparkIcon.Vector -> rememberVectorPainter(sparkIcon.imageVector)
-    is SparkIcon.DrawableRes -> rememberDrawablePainter(getDrawable(LocalContext.current, sparkIcon.drawableId))
-    is SparkIcon.AnimatedDrawableRes -> {
-        val icon = AnimatedImageVector.animatedVectorResource(sparkIcon.drawableId)
-        rememberAnimatedVectorPainter(icon, atEnd)
-    }
-}
-
-/**
- * A [Painter] that can be used to draw a [com.adevinta.spark.icons.SparkIcon]. This will use the correct painter for whatever type the SparkIcon
- * use.
- * @param sparkIcon the icon to draw.
- * @param atEnd Whether the animated vector should be rendered at the end of all its animations.
- */
-//@OptIn(ExperimentalAnimationGraphicsApi::class)
-@Composable
-expect public fun rememberSparkIconPainter(sparkIcon: SparkIcon, atEnd: Boolean = false): Painter
-
-//@PreviewLightDark
-@Composable
-private fun IconPreview() {
-    PreviewTheme {
-        IconSize.entries.map { it to IconIntent.entries.toTypedArray() }.forEach { (size, intents) ->
-            LazyRow {
-                items(
-                    intents.count(),
-                    itemContent = { index ->
-                        Box(
-                            modifier = Modifier.ifTrue(intents[index] == IconIntent.Surface) {
-                                background(SparkTheme.colors.neutralContainer)
-                            },
-                        ) {
-                            Icon(
-                                sparkIcon = SparkIcons.Check,
-                                tint = intents[index].color(),
-                                contentDescription = "Done",
-                                size = size,
-                            )
-                        }
-                    },
-                )
-            }
-        }
-    }
+    is SparkIcon.DrawableRes -> painterResource(sparkIcon.drawableId)
+    is SparkIcon.AnimatedDrawableRes -> painterResource(sparkIcon.drawableId)
 }

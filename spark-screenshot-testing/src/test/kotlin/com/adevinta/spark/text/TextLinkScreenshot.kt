@@ -62,7 +62,7 @@ internal class TextLinkScreenshot {
                 }
                 TextLink(
                     style = SparkTheme.typography.subhead,
-                    text = annotatedStringResource(id = R.string.spark_text_link_short_example),
+                    text = annotatedStringResource(resource = Res.string.spark_text_link_short_example),
                     onClickLabel = "textLink",
                     onClick = {},
                 )
@@ -82,7 +82,7 @@ internal class TextLinkScreenshot {
                 IconSide.entries.forEach { iconSide ->
                     Row {
                         TextLinkButton(
-                            text = stringResource(id = R.string.spark_text_link_button_example),
+                            text = stringResource(Res.string.spark_text_link_button_example),
                             icon = SparkIcons.InfoOutline,
                             intent = ButtonIntent.Accent,
                             iconSide = iconSide,
@@ -92,7 +92,7 @@ internal class TextLinkScreenshot {
                 }
                 TextLink(
                     style = SparkTheme.typography.subhead,
-                    text = annotatedStringResource(id = R.string.spark_text_link_short_example),
+                    text = annotatedStringResource(resource = Res.string.spark_text_link_short_example),
                     onClickLabel = "textLink",
                     onClick = {},
                 )

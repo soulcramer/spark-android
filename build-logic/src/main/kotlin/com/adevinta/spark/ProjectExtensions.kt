@@ -88,8 +88,12 @@ internal fun Project.getVersionsCatalog(): VersionCatalog = runCatching {
 internal inline fun <reified T : KotlinProjectExtension> Project.configureKotlin(
     crossinline configure: T.() -> Unit = {},
 ) {
-    configureJavaCompatibility(21)
-    configureKotlinCompatibility(spark().versions.kotlin.toString())
+    // Only configure Java and Kotlin compatibility if not an Android project
+    // Android projects handle Java compatibility through compileOptions
+    if (!isAndroid) {
+        configureJavaCompatibility(21)
+        configureKotlinCompatibility(spark().versions.kotlin.toString())
+    }
 
     configure<T> {
         forEachCompilerOptions {

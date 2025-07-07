@@ -4,6 +4,7 @@ plugins {
     // https://github.com/icerockdev/moko-resources/issues/263
     alias(libs.plugins.spark.kotlinMultiplatform)
     alias(libs.plugins.spark.compose)
+    id("org.jetbrains.compose.hot-reload") version "1.0.0-alpha11"
 }
 
 kotlin {
@@ -11,12 +12,15 @@ kotlin {
         jvmMain {
             dependencies {
                 implementation(projects.sparkIcons)
+                implementation(projects.sparkCore)
+                implementation(projects.spark)
 //                implementation(projects.shared.qa)
                 implementation(kotlin("reflect"))
                 implementation(compose.foundation)
                 implementation(compose.runtime)
                 implementation(compose.ui)
-                implementation(compose.preview)
+                implementation(compose.uiUtil)
+//                implementation(compose.preview)
                 implementation(compose.materialIconsExtended)
                 implementation(compose.material3)
                 implementation(compose.desktop.currentOs)
